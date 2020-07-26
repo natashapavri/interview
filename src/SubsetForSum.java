@@ -34,8 +34,8 @@ public class SubsetForSum {
 	}
 
 	public static void main(String[] args) throws java.lang.Exception {
-		int[] arrA = { 25, 12, 14, 22, 19, 15, 10, 23 };
-		int Sum = 55;
+		int[] arrA = { 25, -25, 14, 22, 19, 15, 10, 23 };
+		int Sum = 0;
 		SubsetForSum i = new SubsetForSum();
 		int[] result  = i.findSubArray(arrA, Sum);
 		for(int j =0 ;j<result.length; j++) {
