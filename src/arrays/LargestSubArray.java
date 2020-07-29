@@ -3,10 +3,10 @@ package arrays;
 public class LargestSubArray {
 
 	public static void main(String[] args) {
-		int k = 4;
+		int k = 2;
 		int[] arr = { 1,4,3,2,5 };
 
-		int[] result = new int[4];
+		int[] result = new int[k];
 
 		int start = 0;
 		for (int i = 0; i < arr.length - k + 1; i++) {
