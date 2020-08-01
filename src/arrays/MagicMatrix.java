@@ -27,6 +27,8 @@ public class MagicMatrix {
 		int nextRow = n / 2;
 		int nextColumn = n - 1;
 
+		// 3x3 matrix needs 1-9 numbers
+		// 5x5 will need 1-25 numbers
 		for (int i = 1; i < 10; i++) {
 
 			if (nextRow == -1 && nextColumn == n) // 3rd condition
@@ -65,5 +67,55 @@ public class MagicMatrix {
 			}
 			System.out.println();
 		}
+
+		boolean isMagic = checkMatrix(matrix, n);
+		
+		System.out.println(isMagic);
+	}
+
+	private static boolean checkMatrix(int[][] matrix, int n) {
+		int magicMatrix = n * ((n * n) + 1) / 2;
+
+		// check sum of all rows
+		for (int i = 0; i < matrix.length; i++) {
+			int sum = 0;
+			for (int j = 0; j < matrix[0].length; j++) {
+				sum += matrix[i][j];
+			}
+			if (sum != magicMatrix) {
+				return false;
+			}
+		}
+
+		// check sum of all columns
+		for (int i = 0; i < matrix[0].length; i++) {
+			int sum = 0;
+			for (int j = 0; j < matrix.length; j++) {
+				sum += matrix[j][i];
+			}
+			if (sum != magicMatrix) {
+				return false;
+			}
+		}
+
+		// check sum of left to right diagonal
+		int sum = 0;
+		for (int i = 0; i < matrix.length; i++) {
+			sum += matrix[i][i];
+		}
+		if (sum != magicMatrix) {
+			return false;
+		}
+
+		// check sum of right to left diagonal
+		sum = 0;
+		for (int i = matrix[0].length-1; i >=0; i--) {
+			sum += matrix[i][i];
+		}
+		if (sum != magicMatrix) {
+			return false;
+		}
+		
+		return true;
 	}
 }

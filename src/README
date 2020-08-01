@@ -1,0 +1,7 @@
+Subarray -
+1. Subarray of length k and sum = x
+	a. Sliding Window (Unsorted and sorted array)
+	b. BST traverse (Sorted)
+2. Subarray of sum = x
+	a. Prefix sum hashmap
+	b. two pointers
