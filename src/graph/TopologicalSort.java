@@ -79,5 +79,5 @@ public class TopologicalSort {
 			result.add(graphNode);
 			temporaryMarks.remove(graphNode);
 		}
-	}
+	} 	
 }

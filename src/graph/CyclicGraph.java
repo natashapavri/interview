@@ -27,13 +27,11 @@ public class CyclicGraph {
 	}
 
 	static Map<GraphNode, GraphNode> parent = new HashMap<GraphNode, GraphNode>();
-	static List<GraphNode> visited = new ArrayList<>();
 	
 	private static boolean checkCyclic(GraphNode one) {
 		if(!parent.containsKey(one)) {
 			parent.put(one, null);
 		}
-		visited.add(one);
 		
 		boolean isCyclic = false;
 		if(one.getChildren() != null) {

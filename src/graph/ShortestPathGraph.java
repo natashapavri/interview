@@ -41,14 +41,14 @@ public class ShortestPathGraph {
 		if (a == b)
 			return null;
 
-		Queue<GraphNode> toVisit = new LinkedList<>();
-		toVisit.add(a);
+		Queue<GraphNode> queue = new LinkedList<>();
+		queue.add(a);
 
 		Map<GraphNode, GraphNode> parent = new HashMap<>();
 		parent.put(a, null);
 
-		while (!toVisit.isEmpty()) {
-			GraphNode current = toVisit.remove();
+		while (!queue.isEmpty()) {
+			GraphNode current = queue.remove();
 			if (current.getChildren() == null)
 				continue;
 			if (current == b)
@@ -57,7 +57,7 @@ public class ShortestPathGraph {
 			for (GraphNode g : current.getChildren()) {
 				//node is not visited before
 				if (!parent.containsKey(g)) {
-					toVisit.add(g);
+					queue.add(g);
 					parent.put(g, current);
 				}
 			}
