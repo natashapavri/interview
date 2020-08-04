@@ -80,7 +80,15 @@ public class ShortestPathGraph {
 
 class GraphNode {
 	private int value;
+	private int weight;
 	List<GraphNode> children;
+
+	
+	public GraphNode(int value, int weight) {
+		super();
+		this.value = value;
+		this.weight = weight;
+	}
 
 	public GraphNode() {
 		super();
@@ -98,6 +106,14 @@ class GraphNode {
 
 	public void setValue(int value) {
 		this.value = value;
+	}
+
+	public int getWeight() {
+		return weight;
+	}
+
+	public void setWeight(int weight) {
+		this.weight = weight;
 	}
 
 	public List<GraphNode> getChildren() {

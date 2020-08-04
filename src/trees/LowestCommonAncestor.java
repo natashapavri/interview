@@ -33,17 +33,27 @@ public class LowestCommonAncestor {
 		// top down
 		Stack<TreeNode> pathToA = findPath(root, four);
 		Stack<TreeNode> pathToB = findPath(root, five);
+		int pathADistance = pathToA.size() -1;
+		int pathBDistance = pathToB.size() -1;
 		
+		int distanceAncestor = 0;
 		while(!pathToA.isEmpty() && !pathToB.isEmpty()) {
 			TreeNode a = pathToA.pop();
 			TreeNode b = pathToB.pop();
 			if(a == b) {
 				ancestor = a;
-			} 
+			} else {
+				distanceAncestor++;
+			}
 		}
 		
 		System.out.println(ancestor.getValue());
+		
+		// distance b/w nodes = distance of node 1 from root + distance of node 2 from root - 2 * distance of ancestor from root
+		int countPathEdges = (pathADistance) + (pathBDistance) - (2* distanceAncestor);
+		System.out.println(countPathEdges);
 	}
+
 
 	private static Stack<TreeNode> findPath(TreeNode root, TreeNode node) {
 		if(root == null || node == null) return null;

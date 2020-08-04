@@ -11,12 +11,12 @@ public class TopologicalSort {
 
 	public static void main(String[] args) {
 		Map<Integer, GraphNode> map = new HashMap<>();
-		GraphNode one = new GraphNode(1);
-		GraphNode two = new GraphNode(2);
-		GraphNode three = new GraphNode(3);
-		GraphNode four = new GraphNode(4);
-		GraphNode five = new GraphNode(5);
-		GraphNode six = new GraphNode(6);
+		GraphNode one = new GraphNode(1,5);
+		GraphNode two = new GraphNode(2,-2);
+		GraphNode three = new GraphNode(3,10);
+		GraphNode four = new GraphNode(4,-3);
+		GraphNode five = new GraphNode(5,-4);
+		GraphNode six = new GraphNode(6,8);
 
 		map.put(1, one);
 		map.put(2, two);
@@ -57,6 +57,7 @@ public class TopologicalSort {
 		for(GraphNode c : result) {
 			System.out.print(c.getValue() + "->");
 		}
+		
 	}
 
 	private static void toposort(List<GraphNode> visited, GraphNode graphNode, List<GraphNode> temporaryMarks,
