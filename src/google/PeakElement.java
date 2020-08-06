@@ -3,7 +3,7 @@ package google;
 public class PeakElement {
 
 	public static void main(String[] args) {
-		int[] nums = {5, 17, 100, 11};
+		int[] nums = {1, 2, 3, 4, 5};
 		
 		int peak = findPeak(nums);
 		
@@ -13,13 +13,13 @@ public class PeakElement {
 	private static int findPeak(int[] nums) {
 		int left = 0;
 		int right = nums.length;
-		while(right > left) {
+		while(right >= left) {
 			int mid = (left + right) / 2;
 			if(isPeak(nums, mid)) {
 				return nums[mid];
 			} else {
 				// only one peak element exist so no need to check both ends
-				if(nums[mid - 1] > nums[mid + 1]) {
+				if(mid != 0 && mid != nums.length && nums[mid - 1] > nums[mid + 1]) {
 					right = mid - 1;
 				} else {
 					left = mid  + 1;
