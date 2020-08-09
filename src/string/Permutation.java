@@ -25,7 +25,6 @@ public class Permutation {
 			for (int i = l; i < r; i++) {
 				str = swap(str, l, i); // swap
 				permute(str, l + 1, r); // permute
-				//str = swap(str, l, i);
 			}
 		}
 	}
