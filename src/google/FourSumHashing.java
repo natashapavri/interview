@@ -24,12 +24,12 @@ public class FourSumHashing {
 	}
 
 	private static Set<List<Integer>> findSums(int[] nums, int target) {
-		Map<Integer, Pair> sumMap = new HashMap<Integer, Pair>();
+		Map<Integer, Pair<Integer>> sumMap = new HashMap<Integer, Pair<Integer>>();
 		Set<List<Integer>> results = new HashSet<>();
 
 		for (int i = 0; i < nums.length - 1; i++) {
 			for (int j = i + 1; j < nums.length; j++) {
-				sumMap.put(nums[i] + nums[j], new Pair(nums[i], nums[j]));
+				sumMap.put(nums[i] + nums[j], new Pair<Integer>(nums[i], nums[j]));
 			}
 		}
 
@@ -57,29 +57,29 @@ public class FourSumHashing {
 	}
 }
 
-class Pair {
-	private int a;
-	private int b;
+class Pair<T> {
+	private T a;
+	private T b;
 
-	public Pair(int a, int b) {
+	public Pair(T a, T b) {
 		super();
 		this.a = a;
 		this.b = b;
 	}
 
-	public int getA() {
+	public T getA() {
 		return a;
 	}
 
-	public void setA(int a) {
+	public void setA(T a) {
 		this.a = a;
 	}
 
-	public int getB() {
+	public T getB() {
 		return b;
 	}
 
-	public void setB(int b) {
+	public void setB(T b) {
 		this.b = b;
 	}
 
@@ -87,8 +87,8 @@ class Pair {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + a;
-		result = prime * result + b;
+		result = prime * result + ((a == null) ? 0 : a.hashCode());
+		result = prime * result + ((b == null) ? 0 : b.hashCode());
 		return result;
 	}
 
@@ -101,9 +101,15 @@ class Pair {
 		if (getClass() != obj.getClass())
 			return false;
 		Pair other = (Pair) obj;
-		if (a != other.a)
+		if (a == null) {
+			if (other.a != null)
+				return false;
+		} else if (!a.equals(other.a))
 			return false;
-		if (b != other.b)
+		if (b == null) {
+			if (other.b != null)
+				return false;
+		} else if (!b.equals(other.b))
 			return false;
 		return true;
 	}
