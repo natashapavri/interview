@@ -6,6 +6,11 @@ public class TreeNode {
 	private TreeNode right;
 	private TreeNode parent;
 
+	
+	public TreeNode() {
+		super();
+	}
+
 	public TreeNode(int value) {
 		super();
 		this.value = value;

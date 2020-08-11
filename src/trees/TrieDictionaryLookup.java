@@ -1,4 +1,5 @@
 package trees;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -43,6 +44,32 @@ public class TrieDictionaryLookup {
 			System.out.println(str);
 		}
 
+		// find shortest prefix for all words
+		String[] words = { "zebra", "dog", "duck", "dove" };
+		TrieNode root4 = prepareDictionary(words);
+		Map<String, String> prefixMap = findShortestPrefix(root4, words);
+		for(String w : prefixMap.keySet()) {
+			System.out.println(w + " : " + prefixMap.get(w));
+		}
+
+	}
+
+	private static Map<String, String> findShortestPrefix(TrieNode root4, String[] words) {
+		Map<String, String> prefixMap = new HashMap<>();
+		TrieNode current = root4;
+		for(String word : words) {
+			for(char c : word.toCharArray()) {
+				if(current.getChildren().containsKey(c)) {
+					if(current.getChildren().size() <= 1) {
+						break;
+					}
+					current = current.getChildren().get(c);
+				}
+			}
+			prefixMap.put(word, current.getPrefix());
+			current = root4;
+		}
+		return prefixMap;
 	}
 
 	private static void findSubstrings(TrieNode root3, List<String> results) {
