@@ -6,7 +6,6 @@ public class BinaryTreeFromArray {
 
 	public static void main(String[] args) {
 		int[] nums = {5, 3, 2, 6, 1, 4};
-		int[] order = {0, 1, 2, 0, 3, 2};
 		
 		TreeNode root = new TreeNode();
 		
