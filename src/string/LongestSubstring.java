@@ -27,7 +27,7 @@ public class LongestSubstring {
 					if (cache[i][j] > max_len) {
 						max_len = cache[i][j];
 						output = a.substring(i - cache[i][j] + 1, i + 1);
-						System.out.println(output);
+						//System.out.println(output);
 					}
 				}
 			}
