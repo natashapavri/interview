@@ -6,8 +6,7 @@ public class RemoveDupesInPlace {
 		int[] nums = { 1, 1, 2 };
 		int i = 0, j = 1;
 
-		while(i<nums.length&&j<nums.length)
-		{
+		while (i < nums.length && j < nums.length) {
 			if (nums[i] != nums[j]) {
 				i++;
 				nums[i] = nums[j];
@@ -15,10 +14,9 @@ public class RemoveDupesInPlace {
 			j++;
 		}
 
-		for(int n : nums) {
-			System.out.println(n);
+		for (int k = 0; k <= i; k++) {
+			System.out.println(nums[k]);
 		}
-		System.out.println(i+1);
 
 	}
 }
