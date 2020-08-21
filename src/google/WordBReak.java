@@ -3,11 +3,13 @@ package google;
 public class WordBReak {
 
 	public static void main(String[] args) {
-		String a = "catsandog";
+		String a = "catsanddog";
 		String[] b = { "cats", "and", "dog" };
 
+		if (a.equals("") || a == null || b == null || b.length == 0)
+			throw new IllegalArgumentException();
 
-		Integer searchIndex = 0; 
+		Integer searchIndex = 0;
 		searchIndex = wordSearch(a, b, searchIndex);
 
 		if (searchIndex == a.length())
@@ -20,13 +22,13 @@ public class WordBReak {
 		for (String word : b) {
 			if (a.startsWith(word, searchIndex)) {
 				searchIndex = searchIndex + word.length();
-				if(searchIndex <= a.length())
+				if (searchIndex <= a.length())
 					return wordSearch(a, b, searchIndex);
 				else
 					break;
-			} 
+			}
 		}
-		
+
 		return searchIndex;
 	}
 }
