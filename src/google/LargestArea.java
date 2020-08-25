@@ -35,7 +35,7 @@ public class LargestArea {
 			}
 		}
 		
-		System.err.println(maxArea);
+		System.out.println(maxArea);
 		
 	}
 }
