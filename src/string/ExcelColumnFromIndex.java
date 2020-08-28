@@ -3,7 +3,7 @@ package string;
 public class ExcelColumnFromIndex {
 
 	public static void main(String[] args) {
-		int n = 52;
+		int n = 701;
 		System.out.println(convertToTitle(n));
 		String str = "AB";
 		System.out.println(convertToNumber(str));
