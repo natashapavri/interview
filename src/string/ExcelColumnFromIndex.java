@@ -26,16 +26,11 @@ public class ExcelColumnFromIndex {
 		String temp = "";
 		while (n > 0) {
 			char c = getCharacterForInt((n - 1) % 26);
-			temp = temp + c;
+			temp = c + temp;
 			n = (n - 1) / 26;
 		}
 
-		String output = "";
-		for (int i = temp.length() - 1; i >= 0; i--) {
-			output += temp.charAt(i);
-		}
-
-		return output;
+		return temp;
 	}
 
 	private static char getCharacterForInt(int i) {
