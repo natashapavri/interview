@@ -26,7 +26,7 @@ public class BookAllocation {
 		
 		while (right > left) {
 			int mid = (left + right) / 2;
-			if(isPossible(books, students, left, right, mid)) {
+			if(isPossible(books, students, mid)) {
 				right = mid - 1;
 				minPages = Math.min(minPages, mid);
 			} else {
@@ -37,7 +37,7 @@ public class BookAllocation {
 		return minPages;
 	}
 
-	private static boolean isPossible(int[] books, int students, int left, int right, int mid) {
+	private static boolean isPossible(int[] books, int students, int mid) {
 		
 		int currentSum = 0;
 		int maxSum = mid;

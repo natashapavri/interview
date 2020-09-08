@@ -24,7 +24,7 @@ public class PaintersAllocation {
 
 		while (right > left) {
 			int mid = (right + left) / 2;
-			if (isPossible(blocks, painters, timePerUnit, left, right, mid)) {
+			if (isPossible(blocks, painters, timePerUnit, mid)) {
 				minTime = Math.min(minTime, mid);
 				right = mid - 1;
 			} else {
@@ -35,7 +35,7 @@ public class PaintersAllocation {
 		return minTime;
 	}
 
-	private static boolean isPossible(int[] blocks, int painters, int timePerUnit, int left, int right, int mid) {
+	private static boolean isPossible(int[] blocks, int painters, int timePerUnit, int mid) {
 
 		int paintersRequired = 1;
 		int currentTimeTaken = 0;
