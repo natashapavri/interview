@@ -6,7 +6,7 @@ public class RepeatedSubstring {
 
 	// Suffix Array
 	public static void main(String[] args) {
-		String input = "abcab";
+		String input = "abcabcabcabc";
 
 		String repeatString = lrs(input);
 
