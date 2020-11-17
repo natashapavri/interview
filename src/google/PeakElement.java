@@ -3,7 +3,7 @@ package google;
 public class PeakElement {
 
 	public static void main(String[] args) {
-		int[] nums = {1, 2, 3, 4, 5};
+		int[] nums = {0,2,1,0};
 		
 		int peak = findPeak(nums);
 		

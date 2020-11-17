@@ -6,7 +6,7 @@ import java.util.Map;
 public class PointsOnLine {
 
 	public static void main(String[] args) {
-		int[][] points = { { -1, 1 }, { 0, 0 }, { 1, 1 }, { 2, 2 }, { 3, 3 }, { 3, 4 } };
+		int[][] points = { { 1,1},{2,2},{3,3} };
 
 		Map<Integer, Integer> pointSlope = new HashMap<>();
 

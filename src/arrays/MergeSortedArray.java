@@ -56,5 +56,9 @@ public class MergeSortedArray {
 		for (int i = 0; i < result.length; i++) {
 			System.out.println(result[i]);
 		}
+		result = obj.mergeSortedAscending(a, b, a.length, b.length);
+		for (int i = 0; i < result.length; i++) {
+			System.out.println(result[i]);
+		}
 	}
 }

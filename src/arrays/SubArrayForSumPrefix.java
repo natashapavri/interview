@@ -1,7 +1,7 @@
 package arrays;
 import java.util.HashMap;
 
-public class SubsetForSum {
+public class SubArrayForSumPrefix {
 
 	public int[] findSubArray(int[] arrA, int Sum) {
 
@@ -35,9 +35,9 @@ public class SubsetForSum {
 	}
 
 	public static void main(String[] args) throws java.lang.Exception {
-		int[] arrA = { 25, -25, 14, 22, 19, 15, 10, 23 };
-		int Sum = 0;
-		SubsetForSum i = new SubsetForSum();
+		int[] arrA = { 25, -25, 30, 10, 19, 15, 10, 23 };
+		int Sum = 40;
+		SubArrayForSumPrefix i = new SubArrayForSumPrefix();
 		int[] result  = i.findSubArray(arrA, Sum);
 		for(int j =0 ;j<result.length; j++) {
 			System.out.print(result[j] + ", ");
