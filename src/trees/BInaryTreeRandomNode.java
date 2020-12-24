@@ -25,11 +25,11 @@ public class BInaryTreeRandomNode {
 		List<BinaryTreeNode> preorder = new ArrayList<BinaryTreeNode>();
 		getTotalNodes(root, preorder);
 		
-		BinaryTreeNode rand = getRandomNode(root, preorder);
+		BinaryTreeNode rand = getRandomNode(preorder);
 		System.out.println(rand.getValue());
 	}
 
-	private static BinaryTreeNode getRandomNode(BinaryTreeNode root, List<BinaryTreeNode> preorder) {
+	private static BinaryTreeNode getRandomNode(List<BinaryTreeNode> preorder) {
 		Random rand = new Random();
 		int r = rand.nextInt(preorder.size());
 		return preorder.get(r);
