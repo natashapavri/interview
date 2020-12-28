@@ -10,7 +10,7 @@ public class ReversePolishNotation {
 		Stack<Integer> operation = new Stack<>();
 
 		for (String c : expr) {
-			if (isDigit(c)) {
+			if (Character.isDigit(c.toCharArray()[0])) {
 				int num = Integer.parseInt(c);
 				operation.push(num);
 			} else {
@@ -44,17 +44,8 @@ public class ReversePolishNotation {
 				}
 			}
 		}
-		
-		System.out.println(operation.pop());
-	}
 
-	private static boolean isDigit(String c) {
-		try {
-			Integer.parseInt(c);
-			return true;
-		} catch (Exception ex) {
-			return false;
-		}
+		System.out.println(operation.pop());
 	}
 
 }

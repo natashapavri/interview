@@ -5,6 +5,7 @@ public class LargestNextPalindrome {
 	public static void main(String[] args) {
 		String str1 = "23545";
 		String str2 = "1253";
+		String str3 = "999";
 		
 		String left = getLeft(str1);
 		String nextPalindrome = getNextPalindrome(str1, left);
@@ -14,7 +15,12 @@ public class LargestNextPalindrome {
 		left = getLeft(str2);
 		nextPalindrome = getNextPalindrome(str2, left);
 		
-		System.out.println(nextPalindrome);		
+		System.out.println(nextPalindrome);
+		
+		left = getLeft(str3);
+		nextPalindrome = getNextPalindrome(str3, left);
+		
+		System.out.println(nextPalindrome);
 	}
 
 	private static String getNextPalindrome(String str, String left) {

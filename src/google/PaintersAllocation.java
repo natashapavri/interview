@@ -9,7 +9,7 @@ public class PaintersAllocation {
 
 		int totalTime = 0;
 		for (int i = 0; i < blocks.length; i++) {
-			totalTime += 5 * blocks[i];
+			totalTime += timePerUnit * blocks[i];
 		}
 
 		int minTimeTaken = findMinTimeTaken(blocks, painters, timePerUnit, totalTime);

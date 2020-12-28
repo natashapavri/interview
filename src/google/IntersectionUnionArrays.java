@@ -22,16 +22,17 @@ public class IntersectionUnionArrays {
 		}
 	}
 
+	// uncomment code if you wish to take union without dupes
 	private static List<Integer> getUnion(int[] a, int[] b) {
 		List<Integer> result = new ArrayList<>();
 		int i = 0, j = 0;
 		while(i < a.length && j < b.length) {
-			if(i != 0 && a[i] == a[i - 1]) {
+			/*if(i != 0 && a[i] == a[i - 1]) {
 				i++;
 			}
 			if(j != 0 && b[j] == b[j - 1]) {
 				j++;
-			}
+			}*/
 			if(a[i] == b[j]) {
 				result.add(a[i]);
 				i++;
@@ -45,28 +46,29 @@ public class IntersectionUnionArrays {
 			}
 		}
 		
-		if(i != a.length) {
+		if(i < a.length) {
 			result.add(a[i++]);
 		}
-		if(j != b.length) {
+		if(j < b.length) {
 			result.add(b[j++]);
 		}
 		
 		return result;
 	}
 
+	// uncomment code if you wish to take intersection without dupes
 	private static List<Integer> getIntersection(int[] a, int[] b) {
 		List<Integer> result = new ArrayList<Integer>();
 
 		int i = 0, j = 0;
 
 		while (i < a.length && j < b.length) {
-			if (i != 0 && a[i] == a[i - 1]) {
+			/*if (i != 0 && a[i] == a[i - 1]) {
 				i++;
 			}
 			if (j != 0 && b[j] == b[j - 1]) {
 				j++;
-			} else if (a[i] == b[j]) {
+			} else*/ if (a[i] == b[j]) {
 				result.add(a[i]);
 				i++;
 				j++;
