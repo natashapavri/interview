@@ -16,14 +16,18 @@ public class PascalRowGeneration {
 			List<Integer> prow = new LinkedList<Integer>();
 			int previous = 1;
 			for (int col = 0; col <= row; col++) {
+				//first value
 				if(col == 0) {
 					prow.add(1);
 					previous = 1;
 				}
+				// last value
 				else if(col == row) {
 					prow.add(1);
+					previous = 1;
 				}
 				else {
+					// in between
 					int value = previous * (row - col + 1) / col;
 					prow.add(value);
 					previous = value;

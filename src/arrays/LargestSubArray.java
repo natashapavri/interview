@@ -19,7 +19,7 @@ public class LargestSubArray {
 		for(int i=start;i<(start+k);i++) {
 			result[p++] = arr[i];
 		}
-
+		
 		for (int i = 0; i < result.length; i++) {
 			System.out.println(result[i]);
 		}

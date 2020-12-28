@@ -7,21 +7,23 @@ public class LicenseKey {
 		int k = 2;
 
 		key = key.replaceAll("-", "");
-		
+
 		StringBuilder sb = new StringBuilder();
 
 		for (int i = key.length() - 1; i >= 0;) {
-			char[] licensePart = new char[k+1];
+			char[] licensePart = new char[k + 1];
 			for (int j = k; j > 0; j--) {
-				if(i >= 0) {
+				if (i >= 0) {
 					licensePart[j] = key.charAt(i--);
 				}
 			}
-			licensePart[0] = '-';
 			String str = new String(licensePart);
-			sb.insert(0,str.toUpperCase());
+			str = str.trim();
+			str = "-" + str;
+			sb.insert(0, str.toUpperCase());
 		}
-		
+
 		System.out.println(sb.substring(1).toString());
 	}
+
 }

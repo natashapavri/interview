@@ -5,8 +5,8 @@ public class MinMaxLeastComparisons {
 	/**
 	 * #comparisons ==>
 	 * Odd elements = 3 ifs * (n-1)/2
-	 * Even elements = 1(initial comparison) + 3*(n-1)/2
-	 * 
+	 * Even elements = 1(initial comparison) + 3*(n-2)/2
+	 * Time complexity = O(n)
 	 */
 	public static void main(String[] args) {
 		int[] nums = { -2, 1, -4, 5, 3 };

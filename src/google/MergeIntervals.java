@@ -17,7 +17,7 @@ public class MergeIntervals {
 			int mergeLeft = merge[0];
 			int mergeRight = merge[1];
 			
-			if(right>mergeLeft && left<mergeRight) {
+			if(mergeLeft<right && mergeRight>left) {
 				overlaps.add(pair);
 			}
 		}

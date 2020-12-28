@@ -9,7 +9,7 @@ public class EuclideanDistance {
 		int[][] points = {{3,3},{5,1},{-2,4}};
 		int k = 2;
 		
-		//maxheap because queue is fifo and i need the first element to be smallest.
+		//maxheap because queue is fifo and we will be polling extra elements over k. Hence we need the first element to be largest distance so it can be dropped off.
 		//for maxheap comparator will have y-x
 		PriorityQueue<int[]> distance = new PriorityQueue<>(new Comparator<int[]>() {
 

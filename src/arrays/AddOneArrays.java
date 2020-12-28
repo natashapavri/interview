@@ -1,72 +1,28 @@
 package arrays;
-import java.util.LinkedList;
 
 public class AddOneArrays {
 
 	public static void main(String[] args) {
-		NumberNode number = new NumberNode(9);
-		number.setNext(new NumberNode(9));
-		number.getNext().setNext(new NumberNode(9));
-		number.getNext().getNext().setNext(new NumberNode(9));
-		
-		NumberNode add = new NumberNode(1);
-		
-		LinkedList<Integer> result = new LinkedList<>();
-		int carry = 0;
-		
-		if(number == null) throw new IllegalArgumentException();
-		
-		addNumbers(number, add, result, carry);
-		
-		for(int i = (result.size() - 1); i>=0; i--) {
-			System.out.print(result.get(i) + ", ");
+		int[] arr = {9,9,9};
+		int add = 1;
+		int[] sum = new int[arr.length + 1];
+		addNumbers(arr, add, 0, sum);
+		for(int i : sum) {
+			System.out.print(i + "->");
 		}
 	}
 
-	private static void addNumbers(NumberNode number, NumberNode add, LinkedList<Integer> result,
-			int carry) {
-		
-		int sum = number.getData() + add.getData();
-		carry = (sum >= 10) ? 1 : 0;
-		sum = sum % 10;
-		result.add(sum);
-		if(number.getNext() != null) {
-			addNumbers(number.getNext(), add, result, carry);
-		} else {
-			if(carry == 1) {
-				result.add(carry);
-			}
+	private static void addNumbers(int[] arr, int add, int carry, int[] sum) {
+		int k = sum.length - 1;
+		for (int i = arr.length - 1; i >= 0; i--) {
+			int result = arr[i] + add + carry;
+			carry = (result >= 10) ? result / 10 : 0;
+			sum[k--] = result % 10;
+			add = 0;
+		}
+		if(carry != 0) {
+			sum[k] = carry;
 		}
 	}
-	
-	
+
 }
-
-class NumberNode {
-	private int data;
-	private NumberNode next;
-	
-	public NumberNode getNext() {
-		return next;
-	}
-
-	public void setNext(NumberNode next) {
-		this.next = next;
-	}
-
-	public NumberNode(int data) {
-		super();
-		this.data = data;
-	}
-
-	public int getData() {
-		return data;
-	}
-
-	public void setData(int data) {
-		this.data = data;
-	}
-	
-}
-
-

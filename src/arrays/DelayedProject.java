@@ -22,6 +22,12 @@ public class DelayedProject {
 			}
 		}
 
+		for(Integer c : pathOfExecution) {
+			System.out.print(c + "-->");
+		}
+		
+		System.out.println();
+		
 		for (Integer c : pathOfExecution) {
 			if (delays.contains(c)) {
 				pathOfExecution = pathOfExecution.subList(0, pathOfExecution.indexOf(c));
