@@ -14,7 +14,7 @@ public class LargestAreaRectangle2D {
         
         if(matrix == null || matrix.length == 0) return 0;
         
-        int area = 0;
+        int area = Integer.MIN_VALUE;
     
         int[] dp = new int[matrix[0].length];
         

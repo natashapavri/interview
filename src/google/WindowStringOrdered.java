@@ -25,7 +25,7 @@ public class WindowStringOrdered {
 		int start = -1;
 		int end = S.length();
 		
-		for(int i = 1; i<matrix.length; i++) {
+		for(int i = 1; i<matrix.length; i++) {//end - start
 			if(matrix[i][T.length()] != 0 && (i - (matrix[i][T.length()] - 1)) < (end - start)) {
 				start = matrix[i][T.length()] - 1;
 				end = i;

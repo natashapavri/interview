@@ -7,34 +7,33 @@ public class FindSubsequencesOfString {
 
 	public static void main(String[] args) {
 		String input = "abppplee";
-		String[] dict = {"able", "ale", "apple", "bale", "kangaroo"};
-		
+		String[] dict = { "able", "ale", "apple", "bale", "kangaroo" };
+
 		Set<String> subsequences = new HashSet<>();
 		findSubsequences(subsequences, input, new StringBuilder(), 0);
 
 		int maxLength = Integer.MIN_VALUE;
 		String output = "";
-		for(String word : dict) {
-			if(subsequences.contains(word)) {
-				if(maxLength < word.length()) {
+		for (String word : dict) {
+			if (subsequences.contains(word)) {
+				if (maxLength < word.length()) {
 					maxLength = word.length();
 					output = word;
 				}
 			}
 		}
-		
+
 		System.out.println(output);
-		
+
 	}
 
 	private static void findSubsequences(Set<String> subsequences, String input, StringBuilder sb, int start) {
 		subsequences.add(new String(sb.toString()));
 		for (int k = start; k < input.length(); k++) {
-			StringBuilder s = new StringBuilder(sb);
-			s.append(input.charAt(k));
-			findSubsequences(subsequences, input, s, k+1);
-			subsequences.remove(sb.toString());
+			sb.append(input.charAt(k));
+			findSubsequences(subsequences, input, sb, k + 1);
+			sb = sb.deleteCharAt(sb.length() - 1);
 		}
-		
+
 	}
 }

@@ -3,16 +3,15 @@ package google;
 public class LongestValidParenthesis {
 
 	public static void main(String[] args) {
-		String input = ")()())";
+		String input = "))()()";
 		
-		int count = 0;
-		int length = input.length();
+		int openCount = 0, closeCount = 0;
 		
 		for(char c : input.toCharArray()) {
-			if(c == '(') count++;
-			else count--;
+			if(c == '(') openCount++;
+			else closeCount--;
 		}
 		
-		System.out.println(length - Math.abs(count));
+		System.out.println(Math.abs(Math.abs(openCount) - Math.abs(closeCount)));
 	}
 }

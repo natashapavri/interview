@@ -58,6 +58,7 @@ public class TrieDictionaryLookup {
 		Map<String, String> prefixMap = new HashMap<>();
 		TrieNode current = root4;
 		for(String word : words) {
+			current = root4;
 			for(char c : word.toCharArray()) {
 				if(current.getChildren().containsKey(c)) {
 					if(current.getChildren().size() <= 1) {
@@ -67,7 +68,6 @@ public class TrieDictionaryLookup {
 				}
 			}
 			prefixMap.put(word, current.getPrefix());
-			current = root4;
 		}
 		return prefixMap;
 	}

@@ -8,7 +8,7 @@ public class PalindromeSubsets {
 	// subsets is important. this means we cannot permute the characters anyways
 	// we want. It has to be in the order in the string given
 	public static void main(String[] args) {
-		String str = "baba";
+		String str = "baab";
 
 		Set<String> results = new HashSet<>();
 
@@ -27,7 +27,7 @@ public class PalindromeSubsets {
 		for (int i = start; i < arr.length; i++) {
 			resultList.append(arr[i]);
 			subsetHelper(arr, results, resultList, i + 1);
-			resultList = resultList.delete(resultList.length() - 1, resultList.length());
+			resultList = resultList.deleteCharAt(resultList.length() - 1);
 		}
 	}
 }

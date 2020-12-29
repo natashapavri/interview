@@ -39,12 +39,12 @@ public class MultiplyLargeNumbers {
 		long sum = 0;
 		int k = 0;
 		for(int i = b.length() - 1; i>=0; i--) {
-			int bDigit = Integer.parseInt(b.charAt(i)+"");
+			int bDigit = b.charAt(i) - '0';
 			int carry = 0;
 			int rowCount = 0;
 			int r = 0;
 			for(int j = a.length() - 1; j>=0; j--) {
-				int aDigit = Integer.parseInt(a.charAt(j)+"");
+				int aDigit = a.charAt(j) - '0';
 				int product = (aDigit * bDigit) + carry;
 				carry = (product >= 10) ? product / 10 : 0;
 				product = product % 10;

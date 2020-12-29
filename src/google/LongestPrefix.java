@@ -12,7 +12,7 @@ public class LongestPrefix {
 	private static String findLongestPrefix(String[] words, String smallestWord) {
 		boolean contained = true;
 		for (String word : words) {
-			if (!word.contains(smallestWord)) {
+			if (!word.startsWith(smallestWord)) {
 				contained = false;
 				break;
 			}
