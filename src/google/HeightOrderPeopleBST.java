@@ -4,6 +4,13 @@ import java.util.Arrays;
 
 public class HeightOrderPeopleBST {
 
+	/**
+	 * 
+	 * Nodes in BST keep track of how many people are in front of you. 
+	 * Left subtree has shorter people than the root while right sub tree has taller people than the root.
+	 * Every time you add to left subtree you need to increment value of root to account for one more person ahead of the root.
+	 * Every time you add to right subtree, the value of the right node will have nodes at root less. 
+	 */
 	public static void main(String[] args) {
 		int[] heights = { 5, 3, 2, 6, 1, 4 };
 		int[] inFront = { 0, 1, 2, 0, 3, 2 };

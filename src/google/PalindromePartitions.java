@@ -6,7 +6,7 @@ import java.util.List;
 public class PalindromePartitions {
 
 	public static void main(String[] args) {
-		String str = "baba";
+		String str = "aba";
 		List<List<String>> results = new ArrayList<>();
 		findSubsets(str, results, new ArrayList<>(), 0);
 		

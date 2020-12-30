@@ -1,34 +1,36 @@
 package google;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class WordBReak {
 
 	public static void main(String[] args) {
-		String a = "catsanddog";
+		String a = "catsandanddog";
 		String[] b = { "cats", "and", "dog" };
 
 		if (a.equals("") || a == null || b == null || b.length == 0)
 			throw new IllegalArgumentException();
 
-		Integer searchIndex = 0;
-		searchIndex = wordSearch(a, b, searchIndex);
+		Set<String> dict = new HashSet<>();
+		for (String w : b) {
+			dict.add(w);
+		}
 
-		if (searchIndex == a.length())
-			System.out.println("true");
-		else
-			System.out.println("false");
-	}
+		boolean[] dp = new boolean[a.length() + 1];
+		dp[0] = true;
 
-	private static Integer wordSearch(String a, String[] b, Integer searchIndex) {
-		for (String word : b) {
-			if (a.startsWith(word, searchIndex)) {
-				searchIndex = searchIndex + word.length();
-				if (searchIndex <= a.length())
-					return wordSearch(a, b, searchIndex);
-				else
+		for (int i = 1; i < dp.length; i++) {
+			for (int j = 0; j < i; j++) {
+				if (dict.contains(a.substring(j, i)) && dp[j]) {
+					dp[i] = true;
 					break;
+				}
 			}
 		}
 
-		return searchIndex;
+		System.out.println(dp[a.length()]);
+
 	}
+
 }

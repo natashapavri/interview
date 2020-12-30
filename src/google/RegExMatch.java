@@ -6,49 +6,62 @@ public class RegExMatch {
 		String input = "aab";
 		String pattern = "c*a*b";
 
-		boolean isMatch = isMatch(input, pattern, 0, 0);
+		if (input.equals(pattern)) {
+			System.out.println(true);
+			return;
+		}
+
+		if (!pattern.contains(".") && !pattern.contains("*")) {
+			if (!input.equals(pattern)) {
+				System.out.println(false);
+				return;
+			}
+		}
+
+		boolean isMatch = isMatch(input.toCharArray(), pattern.toCharArray());
 
 		System.out.println(isMatch);
+
+		// time complexity = O(mxn)
+		// Solution link : https://www.youtube.com/watch?v=l3hda49XcDE
 	}
 
-	private static boolean isMatch(String input, String pattern, int i, int j) {
-		if (input.equals(pattern))
-			return true;
+	private static boolean isMatch(char[] input, char[] pattern) {
 
-		if(!pattern.contains(".") && !pattern.contains("*")) {
-			if(!input.equals(pattern))
-				return false;
-		}
-		
-		boolean isMatch = false;
-		while (i < input.length() && j < pattern.length()) {
-			if (input.charAt(i) == pattern.charAt(j)) {
-				i++;
-				j++;
-				isMatch = true;
+		boolean[][] dp = new boolean[input.length + 1][pattern.length + 1];
+		dp[0][0] = true;
+
+		// initialize the first row with T/F
+		for (int j = 1; j < dp[0].length; j++) {
+			if (pattern[j - 1] == '*') {
+				dp[0][j] = dp[0][j - 2];
 			}
+		}
 
-			else if (pattern.charAt(j) == '.' && Character.isLetter(input.charAt(i))) {
-				i++;
-				j++;
-				isMatch = true;
-			} else if (pattern.charAt(j) == '*' && j == pattern.length() - 1) {
-				i++;
-				j++;
-				isMatch = true;
-			} else if (pattern.charAt(j) == '*' && j < pattern.length() - 1) {
-				while (input.charAt(i) != pattern.charAt(j + 1) && Character.isLetter(input.charAt(i))) {
-					i++;
+		// initialize rest of the matrix
+		/**
+		 * dp[i][j] = if(text[i] == pattern[j] || pattern[j] == ".") then
+		 * dp[i-1][j-1] if(pattern[j-1] == '*') 1. 0 occurrences of pattern =
+		 * dp[i][j-2] 2. text[i]==pattern[j-1] || pattern[j-1] == '.' =
+		 * dp[i-1][j]
+		 */
+
+		for (int i = 1; i < dp.length; i++) {
+			for (int j = 1; j < dp[0].length; j++) {
+				if (input[i - 1] == pattern[j - 1] || pattern[j - 1] == '.') {
+					dp[i][j] = dp[i - 1][j - 1];
+				} else if (pattern[j - 1] == '*') {
+					dp[i][j] = dp[i][j - 2];
+					if (input[i - 1] == pattern[j - 2] || pattern[j - 2] == '.') {
+						dp[i][j] |= dp[i - 1][j];
+					}
+				} else {
+					dp[i][j] = false;
 				}
-				j++;
-			}
-			else if(Character.isLetter(input.charAt(i)) && Character.isLetter(pattern.charAt(j)) && input.charAt(i) != pattern.charAt(j)) {
-				i++;
-				j++;
-				isMatch = false;
 			}
 		}
 
-		return isMatch;
+		return dp[input.length][pattern.length];
+
 	}
 }
