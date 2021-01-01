@@ -1,48 +1,44 @@
 package google;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 public class WordBreakII {
 
 	public static void main(String[] args) {
-		String input = "catsanddog";
+		String input = "catsandanddog";
 		String[] dict = { "cat", "cats", "and", "sand", "dog" };
 
-		Map<Integer, List<Integer>> indexLength = new HashMap<>();
-
-		for (String word : dict) {
-			Integer index = input.indexOf(word);
-			if(index == -1) continue;
-			indexLength.putIfAbsent(index, new ArrayList<Integer>());
-			indexLength.get(index).add(word.length());
+		Set<String> dictionary = new HashSet<>();
+		for(String word : dict) {
+			dictionary.add(word);
 		}
+		List<StringBuilder> results = new ArrayList<>();
+		findSentences(input, dictionary, results, new StringBuilder(), 0);
 		
-		if(indexLength.size() == 0) System.out.println("No match");
-		
-		Set<StringBuilder> sentences = new HashSet<>();
-		findSentences(indexLength, input, sentences, new StringBuilder(), 0);
-		
-		for(StringBuilder sb : sentences) {
+		for(StringBuilder sb : results) {
 			System.out.println(sb.toString());
 		}
 	}
 
-	private static void findSentences(Map<Integer, List<Integer>> indexLength, String input, Set<StringBuilder> sentences, StringBuilder sb, int nextIndex) {
-		sentences.add(sb);
-		if(indexLength.containsKey(nextIndex) && nextIndex < input.length()) {
-			for(Integer length : indexLength.get(nextIndex)) {
-				StringBuilder s = new StringBuilder(sb);
-				s.append(" ");
-				s.append(input.substring(nextIndex, nextIndex + length));
-				sentences.add(s);
-				findSentences(indexLength, input, sentences, s, nextIndex + length);
-				sentences.remove(sb);
+	private static void findSentences(String input, Set<String> dictionary, List<StringBuilder> results, StringBuilder sb, int start) {
+		
+		if(start >= input.length()) {
+			results.add(new StringBuilder(sb.toString()));
+		}
+		
+		for(int i = start; i < input.length(); i++) {
+			String str = input.substring(start, i + 1);
+			if(dictionary.contains(str)) {
+				sb.append(str).append(" ");
+				findSentences(input, dictionary, results, sb, i + 1);
+				// delete str and the space
+				sb = sb.delete(start, i + 2);
 			}
+			
 		}
 	}
+
 }

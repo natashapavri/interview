@@ -65,7 +65,7 @@ public class WindowString {
 		if(start_index == -1) {
 			return null;
 		}
-		
+		// start + length of window = end
 		return str.substring(start_index, start_index + win_len);
 	}
 }

@@ -18,11 +18,11 @@ public class WordLadder {
 
 		List<String> dict = Arrays.asList("hot", "dot", "dog", "lot", "log", "cog");
 
-		if(input.equals(output)) System.out.println("0");
-		
+		// word ladder 1
 		int length = traverseForOutput(input, output, dict);
 		System.out.println(length);
-		
+
+		// word ladder 2
 		Set<List<String>> paths = traverseForPaths(input, output, dict);
 		System.out.println(paths);
 	}
@@ -36,24 +36,23 @@ public class WordLadder {
 	}
 
 	private static void dfs(Map<WordLadderNode, List<WordLadderNode>> graph, Set<List<String>> results,
-			WordLadderNode input, String output, ArrayList<String> result) {
-		result.add(input.getWord());
+			WordLadderNode input, String output, List<String> result) {
+
 		if (input.getWord().equals(output)) {
 			results.add(new ArrayList<>(result));
-		} else {
-			if (graph.containsKey(input)) {
-				for (WordLadderNode c : graph.get(input)) {
-					dfs(graph, results, c, output, result);
-				}
-			}
 		}
-		result.remove(result.size() - 1);
+		if (graph.containsKey(input)) {
+			result.add(input.getWord());
+			for (WordLadderNode c : graph.get(input)) {
+				dfs(graph, results, c, output, result);
+			}
+			result.remove(result.size() - 1);
+		}
 	}
 
 	private static void bfs(Map<WordLadderNode, List<WordLadderNode>> graph, String input, String output,
 			List<String> dict) {
 		WordLadderNode node = new WordLadderNode(input, 1);
-		graph.put(node, new ArrayList<WordLadderNode>());
 
 		Queue<WordLadderNode> queue = new LinkedList<>();
 		queue.add(node);
@@ -79,6 +78,9 @@ public class WordLadder {
 	}
 
 	private static int traverseForOutput(String input, String output, List<String> dict) {
+		if (input.equals(output))
+			return 0;
+
 		Queue<WordLadderNode> queue = new LinkedList<WordLadderNode>();
 		queue.add(new WordLadderNode(input, 1));
 		Queue<WordLadderNode> visited = new LinkedList<WordLadderNode>();
@@ -88,11 +90,12 @@ public class WordLadder {
 			visited.add(node);
 			for (String word : dict) {
 				WordLadderNode n = new WordLadderNode(word, node.getLength() + 1);
+				if (isAdjacent(word, output)) {
+					return n.getLength();
+				}
 				if (isAdjacent(word, node.getWord()) && !visited.contains(n)) {
 					queue.add(n);
 					break;
-				} else if (isAdjacent(word, output)) {
-					return n.getLength();
 				}
 			}
 		}

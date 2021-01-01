@@ -1,23 +1,36 @@
 package google;
 
+import java.util.Stack;
+
 public class LongestValidParenthesis {
 
 	public static void main(String[] args) {
-		String input = ")()())";
+		String input = ")()(()";
 		
-		int openCount = 0, closeCount = 0;
-		
-		for(char c : input.toCharArray()) {
-			if(c == '(') openCount++;
-			else closeCount++;
+		if("".equals(input) || input == null) {
+			return;
 		}
 		
-		if(openCount == closeCount) {
-			System.out.println(2 * openCount);
-		} else if (openCount > closeCount) {
-			System.out.println(2 * closeCount);
-		} else {
-			System.out.println(2 * openCount);
+		Stack<Integer> stack = new Stack<>();
+		
+		stack.push(-1);
+		int maxLength = Integer.MIN_VALUE;
+		
+		for(int i = 0; i < input.length(); i++) {
+			char c = input.charAt(i);
+			if(c == '(') {
+				stack.push(i);
+			} else {
+				stack.pop();
+				if(stack.isEmpty()) {
+					stack.push(i);
+				} else {
+					maxLength = Math.max(maxLength, (i-stack.peek()));
+				}
+			}
 		}
+		
+		
+		System.out.println(maxLength);
 	}
 }

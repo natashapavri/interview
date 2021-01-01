@@ -10,7 +10,8 @@ public class CaptureRegionX {
 
 		int rows = matrix.length;
 		int cols = matrix[0].length;
-
+		
+		// first & last column marking
 		for (int r = 0; r < matrix.length; r++) {
 			if (matrix[r][0] == 'O')
 				dfs(matrix, r, 0);
@@ -18,6 +19,7 @@ public class CaptureRegionX {
 				dfs(matrix, r, cols - 1);
 		}
 
+		// first & last row marking
 		for (int c = 0; c < matrix[0].length; c++) {
 			if (matrix[0][c] == 'O')
 				dfs(matrix, 0, c);

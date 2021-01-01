@@ -2,7 +2,7 @@ package google;
 
 import java.util.Arrays;
 
-public class RepeatedSubstring {
+public class RepeatedSubstringSuffixArray {
 
 	// Suffix Array
 	public static void main(String[] args) {

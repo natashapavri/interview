@@ -15,34 +15,29 @@ public class InterleavingString {
 	}
 
 	private static boolean isInterleaving(String a, String b, String c) {
-		boolean isMatch = false;
 
 		int i = 0, j = 0, k = 0;
 
 		while (i < a.length() || j < b.length() || k < c.length()) {
-			boolean isFound = false;
 
 			while (i < a.length() && k < c.length() && a.charAt(i) == c.charAt(k)) {
 				i++;
 				k++;
-				isFound = true;
 			}
 			while (j < b.length() && k < c.length() && b.charAt(j) == c.charAt(k)) {
 				j++;
 				k++;
-				isFound = true;
 			}
-			if (!isFound) {
-				isMatch = false;
+			if(a.charAt(i) != c.charAt(k) && b.charAt(j) != c.charAt(k)) {
 				break;
 			}
 		}
 
 		if (i == a.length() && j == b.length() && k == c.length()) {
-			isMatch = true;
+			return true;
 		}
 
-		return isMatch;
+		return false;
 	}
 
 	// time complexity = O(mxn)
@@ -52,6 +47,13 @@ public class InterleavingString {
 		boolean[][] dp = new boolean[a.length + 1][b.length + 1];
 		dp[0][0] = true;
 
+		for(int i = 0; i < dp.length; i++) {
+			for(int j = 0; j < dp[0].length; j++) {
+				System.out.print(dp[i][j] + " ");
+			}
+			System.out.println();
+		}
+		
 		for (int i = 1; i < dp.length; i++) {
 			for (int j = 1; j < dp[0].length; j++) {
 				if (c[i + j - 1] == a[i - 1]) {
@@ -62,6 +64,13 @@ public class InterleavingString {
 					dp[i][j] = false;
 				}
 			}
+		}
+		
+		for(int i = 0; i < dp.length; i++) {
+			for(int j = 0; j < dp[0].length; j++) {
+				System.out.print(dp[i][j] + " ");
+			}
+			System.out.println();
 		}
 		return dp[a.length][b.length];
 	}
