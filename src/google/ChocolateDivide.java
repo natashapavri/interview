@@ -17,7 +17,7 @@ public class ChocolateDivide {
 		}
 
 		int ans = Integer.MIN_VALUE;
-		int left = 1;
+		int left = 1; // minimum sweetness in array
 		int right = total;
 
 		while (left <= right) {
