@@ -13,19 +13,20 @@ public class BookAllocation {
 	}
 
 	private static int findMinPages(int[] books, int students) {
-		int left = 0;
 		int sum = 0;
-
+		int l = Integer.MAX_VALUE;
 		for (int book : books) {
 			sum += book;
+			l = Math.min(l, book); 
 		}
 
+		int left = l;
 		int right = sum;
 
 		int minPages = Integer.MAX_VALUE;
 		
-		while (right > left) {
-			int mid = (left + right) / 2;
+		while (right >= left) {
+			int mid = left + (right - left) / 2;
 			if(isPossible(books, students, mid)) {
 				right = mid - 1;
 				minPages = Math.min(minPages, mid);

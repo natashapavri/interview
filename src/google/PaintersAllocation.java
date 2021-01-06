@@ -7,23 +7,25 @@ public class PaintersAllocation {
 		int timePerUnit = 1;
 		int[] blocks = { 1, 8, 11, 3 };
 
-		int totalTime = 0;
-		for (int i = 0; i < blocks.length; i++) {
-			totalTime += timePerUnit * blocks[i];
-		}
-
-		int minTimeTaken = findMinTimeTaken(blocks, painters, timePerUnit, totalTime);
+		int minTimeTaken = findMinTimeTaken(blocks, painters, timePerUnit);
 		System.out.println(minTimeTaken);
 	}
 
-	private static int findMinTimeTaken(int[] blocks, int painters, int timePerUnit, int totalTime) {
+	private static int findMinTimeTaken(int[] blocks, int painters, int timePerUnit) {
 
-		int left = 0;
+		int left = Integer.MAX_VALUE;
+		int totalTime = 0;
+		
+		for (int i = 0; i < blocks.length; i++) {
+			totalTime += timePerUnit * blocks[i];
+			left = Math.min(left, blocks[i] * timePerUnit);
+		}
+		
 		int right = totalTime;
 		int minTime = Integer.MAX_VALUE;
 
-		while (right > left) {
-			int mid = (right + left) / 2;
+		while (right >= left) {
+			int mid = left + (right - left) / 2;
 			if (isPossible(blocks, painters, timePerUnit, mid)) {
 				minTime = Math.min(minTime, mid);
 				right = mid - 1;

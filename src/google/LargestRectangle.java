@@ -3,7 +3,8 @@ package google;
 public class LargestRectangle {
 
 	public static void main(String[] args) {
-		int[][] matrix = { { 1, 1, 1 }, { 0, 1, 1 }, { 1, 0, 0 } };
+		//int[][] matrix = { { 1, 1, 1 }, { 0, 1, 1 }, { 1, 0, 0 } };
+		int[][] matrix = { { 0, 1, 1, 0 }, { 0, 1, 1, 0 }, { 0, 0, 0, 1 } };
 		int[][] cache = new int[matrix.length][matrix[0].length];
 
 		int maxLength = Integer.MIN_VALUE;

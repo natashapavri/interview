@@ -2,6 +2,8 @@ package leetcode.google;
 
 public class Game24Solver {
 
+	// time complexity = O(1)
+	// space complexity = O(1)
 	public static void main(String[] args) {
 		int[] nums = { 1, 2, 1, 1 };
 		double[] input = new double[nums.length];

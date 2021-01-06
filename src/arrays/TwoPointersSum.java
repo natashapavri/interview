@@ -9,18 +9,18 @@ public class TwoPointersSum {
 		int l = 0;
 		int r = l + 1;
 
-		int slidingSum = nums[l];
+		int prefixSum = nums[l];
 		while (l < r) {
-			slidingSum = slidingSum + nums[r];
-			if (slidingSum < sum) {
+			prefixSum = prefixSum + nums[r];
+			if (prefixSum < sum) {
 				r++;
 			}
-			if (slidingSum == sum) {
+			if (prefixSum == sum) {
 				break;
 			}
-			if (slidingSum > sum) {
-				while (slidingSum > sum) {
-					slidingSum = slidingSum - nums[l];
+			if (prefixSum > sum) {
+				while (prefixSum > sum) {
+					prefixSum = prefixSum - nums[l];
 					l++;
 				}
 				r++;

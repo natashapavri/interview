@@ -11,13 +11,14 @@ public class ChocolateDivide {
 
 	private static int maximizeSweetness(int[] sweetness, int K) {
 		int total = 0;
-
+		int left = Integer.MAX_VALUE; // minimum sweetness in array
 		for (int i = 0; i < sweetness.length; i++) {
 			total += sweetness[i];
+			left = Math.min(left, sweetness[i]);
 		}
 
 		int ans = Integer.MIN_VALUE;
-		int left = 1; // minimum sweetness in array
+		
 		int right = total;
 
 		while (left <= right) {
