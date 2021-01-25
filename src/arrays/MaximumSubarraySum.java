@@ -26,6 +26,7 @@ public class MaximumSubarraySum {
 		for (int i = 0; i < nums.length; i++) {
 			if(nums[i] < 0) {
 				max_as_of_here = 0;
+				continue;
 			}
 			max_as_of_here = max_as_of_here + nums[i];
 			if(max_so_far < max_as_of_here) {

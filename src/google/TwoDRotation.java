@@ -3,8 +3,10 @@ package google;
 public class TwoDRotation {
 
 	/**
-	 * 90 rotation anti-clock = transpose & reverse columns
-	 * 90 rotation clock = transpose & reverse rows
+	 * 90 anti-clock or 270 clock rotation = transpose & reverse columns 90
+	 * rotation clock = transpose & reverse rows 180 rotation = transpose
+	 * reverse columns, transpose reverse columns
+	 * 
 	 * @param args
 	 */
 	public static void main(String[] args) {
@@ -18,7 +20,7 @@ public class TwoDRotation {
 			System.out.println();
 		}
 		System.out.println();
-		
+
 		transpose(matrix);
 		for (int i = 0; i < matrix.length; i++) {
 			for (int j = 0; j < matrix[0].length; j++) {
@@ -27,16 +29,14 @@ public class TwoDRotation {
 			System.out.println();
 		}
 		System.out.println();
-		
-		
-		
+
 		anticlock(matrix);
 		clock(matrix);
 
 	}
 
 	private static void clock(int[][] matrix) {
-		
+
 		reverseRows(matrix);
 
 		for (int i = 0; i < matrix.length; i++) {
@@ -45,14 +45,14 @@ public class TwoDRotation {
 			}
 			System.out.println();
 		}
-		
+
 		System.out.println();
 	}
 
 	private static void reverseRows(int[][] matrix) {
-		for(int i=0;i<matrix.length;i++) {
-			for(int j=0;j<matrix[0].length/2;j++) {
-				int newIndex = matrix[0].length-j-1;
+		for (int i = 0; i < matrix.length; i++) {
+			for (int j = 0; j < matrix[0].length / 2; j++) {
+				int newIndex = matrix[0].length - 1 - j;
 				int t = matrix[i][j];
 				matrix[i][j] = matrix[i][newIndex];
 				matrix[i][newIndex] = t;
@@ -70,14 +70,14 @@ public class TwoDRotation {
 			}
 			System.out.println();
 		}
-		
+
 		System.out.println();
 	}
 
 	private static void reverseColumns(int[][] matrix) {
 		for (int j = 0; j < matrix[0].length; j++) {
 			for (int i = 0; i < matrix.length / 2; i++) {
-				int newIndex = matrix[0].length - 1 - i;
+				int newIndex = matrix.length - 1 - i;
 				int t = matrix[i][j];
 				matrix[i][j] = matrix[newIndex][j];
 				matrix[newIndex][j] = t;

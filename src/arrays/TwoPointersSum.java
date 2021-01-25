@@ -3,6 +3,7 @@ package arrays;
 public class TwoPointersSum {
 
 	public static void main(String[] args) {
+		//int[] nums = { 1, 3, 2, 5, 1, 1, 2, 3 };
 		int[] nums = { 1, 3, 2, 5, 1, 1, 2, 3 };
 		int sum = 8;
 

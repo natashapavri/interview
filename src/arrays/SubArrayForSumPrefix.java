@@ -1,10 +1,12 @@
 package arrays;
+
 import java.util.HashMap;
 
 public class SubArrayForSumPrefix {
 
 	public int[] findSubArray(int[] arrA, int Sum) {
 
+		//map of prefix sum & index
 		HashMap<Integer, Integer> sums = new HashMap<>();
 		int prefixSum = 0;
 		int start = 0;
@@ -27,7 +29,7 @@ public class SubArrayForSumPrefix {
 		}
 
 		int[] result = new int[end - start + 1];
-		int i =0;
+		int i = 0;
 		for (int j = start; j <= end; j++) {
 			result[i++] = arrA[j];
 		}
@@ -35,11 +37,12 @@ public class SubArrayForSumPrefix {
 	}
 
 	public static void main(String[] args) throws java.lang.Exception {
-		int[] arrA = { 25, -25, 30, 10, 19, 15, 10, 23 };
-		int Sum = 40;
+		// int[] arrA = { 25, -25, 30, 10, 19, 15, 10, 23 };
+		int[] arrA = { 1, 2, -5, 1, 2, -1 };
+		int Sum = 0;
 		SubArrayForSumPrefix i = new SubArrayForSumPrefix();
-		int[] result  = i.findSubArray(arrA, Sum);
-		for(int j =0 ;j<result.length; j++) {
+		int[] result = i.findSubArray(arrA, Sum);
+		for (int j = 0; j < result.length; j++) {
 			System.out.print(result[j] + ", ");
 		}
 	}

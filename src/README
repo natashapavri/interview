@@ -3,7 +3,7 @@ Subarray -
 	a. Sliding Window (Unsorted and sorted array)
 	b. BST traverse (Sorted)
 2. Subarray of sum = x
-	a. Prefix sum hashmap
-	b. two pointers
+	a. Prefix sum hashmap (negative, positive numbers)
+	b. two pointers (positive numbers)
 3. If you dont know the sum and find maximum sum subarray (negative+positive numbers)
 	a. max_as_of_here and max_so_far approach

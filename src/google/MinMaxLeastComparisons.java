@@ -4,8 +4,8 @@ public class MinMaxLeastComparisons {
 
 	/**
 	 * #comparisons ==>
-	 * Odd elements = 3 ifs * (n-1)/2
-	 * Even elements = 1(initial comparison) + 3*(n-2)/2
+	 * Odd elements = 3 ifs * (n-1 (one number is done)/2
+	 * Even elements = 1(initial comparison) + 3 ifs*(n-2 (2 numbers are done)/2
 	 * Time complexity = O(n)
 	 */
 	public static void main(String[] args) {

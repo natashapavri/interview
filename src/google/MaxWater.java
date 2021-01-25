@@ -9,7 +9,7 @@ public class MaxWater {
 		for (int i = 0; i < heights.length; i++) {
 			for (int j = i + 1; j < heights.length; j++) {
 				int height = Math.min(heights[j], heights[i]);
-				int base = Math.abs(i - j);
+				int base = j - i;
 				int area = base * height;
 				max = Math.max(max, area);
 			}
