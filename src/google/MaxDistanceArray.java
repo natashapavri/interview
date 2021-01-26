@@ -17,8 +17,9 @@ public class MaxDistanceArray {
 		int min = Integer.MAX_VALUE;
 		
 		for(int i = 0; i < arr.length; i++) {
-			min = Math.min(min, index.get(arr[i]));
-			output = Math.max(output, index.get(arr[i]) - min);
+			int idx = index.get(arr[i]);
+			min = Math.min(min, idx);
+			output = Math.max(output, idx - min);
 		}
 		
 		System.out.println(output);

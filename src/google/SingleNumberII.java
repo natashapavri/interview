@@ -33,25 +33,28 @@ public class SingleNumberII {
 	/**
 	 * Let us consider the example array {5, 5, 5, 8}. The 101, 101, 101, 1000
 	 * Sum of first bits%3 = (1 + 1 + 1 + 0)%3 = 0; Sum of second bits%3 = (0 +
-	 * 0 + 0 + 0)%0 = 0; Sum of third bits%3 = (1 + 1 + 1 + 0)%3 = 0; Sum of
+	 * 0 + 0 + 0)%3 = 0; Sum of third bits%3 = (1 + 1 + 1 + 0)%3 = 0; Sum of
 	 * fourth bits%3 = (1)%3 = 1;
+	 * https://leetcode.com/problems/single-number-ii/discuss/1003180/Java-Detailed-Explanation-Best-Approach
 	 */
 	private static int getSingleNumberBit(int[] nums) {
-		int x = 0;
-		int result = 0;
-		for (int i = 0; i < 32; i++) {
-			int count = 0;
-			x = (1 << i);
-			for (int j = 0; j < nums.length; j++) {
-				if ((nums[j] & x) == 0)
-					count++;
-			}
-
-			if (count % 3 == 0) {
-				result |= x;
-			}
+		int tn = -1, tnp1 = 0, tnp2 = 0;
+		for(int i = 0; i < nums.length; i++) {
+			int cwtn = tn & nums[i];
+			int cwtnp1 = tnp1 & nums[i];
+			int cwtnp2 = tnp2 & nums[i];
+			
+			tn = tn & (~cwtn);
+			tnp1 = tnp1 | cwtn;
+			
+			tnp1 = tnp1 & (~cwtnp1);
+			tnp2 = tnp2 | cwtnp1;
+			
+			tnp2 = tnp2 & (~cwtnp2);
+			tn = tn | cwtnp2;
 		}
-		return result;
+		
+		return tnp1;
 	}
 
 	private static int getSingleNumberMath(int[] nums) {

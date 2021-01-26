@@ -61,7 +61,7 @@ public class LinkedListSort {
 		ListNode fast = head;
 		ListNode slow = head;
 
-		while (fast.getNext().getNext() != null && slow.getNext() != null) {
+		while (fast.getNext() != null && fast.getNext().getNext() != null && slow.getNext() != null) {
 			slow = slow.getNext();
 			fast = fast.getNext().getNext();
 		}
