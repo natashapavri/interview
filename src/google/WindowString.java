@@ -54,7 +54,7 @@ public class WindowString {
 						hash_str[str.charAt(start)]--;
 					start++;
 				}
-				int len_win = i - start + 1; 
+				int len_win = i - start; 
 				if(win_len > len_win) {
 					win_len = len_win;
 					start_index = start;
@@ -66,6 +66,6 @@ public class WindowString {
 			return null;
 		}
 		// start + length of window = end
-		return str.substring(start_index, start_index + win_len);
+		return str.substring(start_index, start_index + win_len + 1);
 	}
 }

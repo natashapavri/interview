@@ -56,9 +56,10 @@ public class InterleavingString {
 		
 		for (int i = 1; i < dp.length; i++) {
 			for (int j = 1; j < dp[0].length; j++) {
-				if (c[i + j - 1] == a[i - 1]) {
+				int k = i + j;
+				if (c[k - 1] == a[i - 1]) {
 					dp[i][j] = dp[i - 1][j];
-				} else if (c[i + j - 1] == b[j - 1]) {
+				} else if (c[k - 1] == b[j - 1]) {
 					dp[i][j] = dp[i][j - 1];
 				} else {
 					dp[i][j] = false;

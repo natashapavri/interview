@@ -48,6 +48,6 @@ public class LongestPathInMatrix {
 		int count = 1 + Math.max(countDown, countRight);
 		cache[i][j] = count;
 
-		return count;
+		return cache[i][j];
 	}
 }

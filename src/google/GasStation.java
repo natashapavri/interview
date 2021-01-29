@@ -10,12 +10,12 @@ public class GasStation {
 		int index = Integer.MAX_VALUE;
 		for (int i = 0; i < gas.length; i++) {
 			remainingGas += gas[i];
-			if (gas[i] >= cost[i] && remainingGas != 0) {
+			if (remainingGas >= cost[i]) {
 				index = Math.min(index, i);
 				remainingGas -= cost[i];
 			} else {
 				index = Integer.MAX_VALUE;
-				remainingGas = 0;
+				remainingGas-=gas[i];
 			}
 		}
 		if (index == Integer.MAX_VALUE)

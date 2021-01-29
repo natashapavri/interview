@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class ConfusingNumber {
 
-	/** Confusing number - a number which when rotated 180 gived another meaningful number
+	/** Confusing number - a number which when rotated 180 gives another meaningful number
 	 * Only numbers which rotate meaningfully are 0, 1, 6, 8, 9
 	 */
 	public static void main(String[] args) {
@@ -58,10 +58,10 @@ public class ConfusingNumber {
 			input = input / 10;
 		}
 		if(sum == -1) {
-			//System.out.println("Invalid");
+			System.out.println("Invalid");
 			return false;
 		} else {
-			//System.out.println(sum);
+			System.out.println(sum);
 			return true;
 		}
 	}

@@ -29,7 +29,7 @@ public class MagicMatrix {
 
 		// 3x3 matrix needs 1-9 numbers
 		// 5x5 will need 1-25 numbers
-		for (int i = 1; i < 10; i++) {
+		for (int i = 1; i <= n*n; i++) {
 
 			if (nextRow == -1 && nextColumn == n) // 3rd condition
 			{

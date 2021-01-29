@@ -20,6 +20,7 @@ public class WordBReak {
 		boolean[] dp = new boolean[a.length() + 1];
 		dp[0] = true;
 
+		//total string is 0-j-i, we check if j-i is in dict & string 0-j is true
 		for (int i = 1; i < dp.length; i++) {
 			for (int j = 0; j < i; j++) {
 				if (dict.contains(a.substring(j, i)) && dp[j]) {

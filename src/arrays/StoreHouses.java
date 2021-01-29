@@ -7,7 +7,6 @@ public class StoreHouses {
 		int[] houses = { 4, 8, 1, 1 };
 		int[] stores = { 5, 3, 1, 2, 6 };
 
-		Arrays.sort(houses);
 		Arrays.sort(stores);
 
 		int[] results = new int[houses.length];
@@ -21,21 +20,24 @@ public class StoreHouses {
 			// }
 			// }
 			int low = 0;
-			int high = stores.length;
+			int high = stores.length - 1;
 
-			while (low < high) {
+			while (low <= high) {
 				int mid = (low + high) / 2;
 				int diff = Math.abs(houses[i] - stores[mid]);
 				if (houses[i] == stores[mid]) {
 					results[i] = stores[mid];
 					break;
 				}
-				if (minDiff > diff) {
+				if(diff == minDiff) {
+					results[i] = Math.min(results[i], stores[mid]);
+				}
+				else if (minDiff > diff) {
 					minDiff = diff;
 					results[i] = stores[mid];
 				}
-				if (diff < stores[mid]) {
-					high = mid;
+				if (stores[mid] > houses[i]) {
+					high = mid - 1;
 				} else {
 					low = mid + 1;
 				}

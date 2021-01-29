@@ -22,7 +22,7 @@ public class LargestRectangle {
 		if(i == matrix.length || j == matrix[0].length) return 0;
 		if(matrix[i][j] == 0) return 0;
 		if(cache[i][j] > 0) return cache[i][j];
-		cache[i][j] = 1 + Math.max(findSquare(matrix, cache, i+1, j), findSquare(matrix, cache, i+1, j+1));
+		cache[i][j] = 1 + Math.max(findSquare(matrix, cache, i+1, j), findSquare(matrix, cache, i, j+1));
 		
 		return cache[i][j];
 	}

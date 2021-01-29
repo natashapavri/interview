@@ -8,8 +8,6 @@ import java.util.TreeMap;
 public class BestFruit {
 
 	public static void main(String[] args) {
-		int N = 4;
-		int M = 5;
 		int[][] votes = { { 1, 2, 3, 4 }, { 1, 2, 3, 4 }, { 2, 4, 3, 1 }, { 3, 4, 2, 1 }, { 4, 3, 2, 1 } };
 		Set<Integer> deletes = new HashSet<>();
 		Map<Integer, Integer> freq = new TreeMap<>();

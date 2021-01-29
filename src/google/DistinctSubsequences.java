@@ -6,28 +6,21 @@ public class DistinctSubsequences {
 		String a = "rabbbiot";
 		String b = "rabbit";
 
-		int max = 0;
-		int[] a_hash = new int[256];
-		int[] b_hash = new int[256];
+		int[][] dp = new int[a.length() + 1][b.length() + 1];
 
-		if (a.length() == b.length())
-			max = 1;
-		else {
-			for (char c : b.toCharArray()) {
-				b_hash[c]++;
-			}
-			for (char c : a.toCharArray()) {
-				a_hash[c]++;
-			}
+		for (int i = 0; i < dp.length; i++) {
+			dp[i][0] = 1;
+		}
 
-			for (int i = 0; i < 256; i++) {
-				if (a_hash[i] > b_hash[i]) {
-					max += a_hash[i];
-				} else if (a_hash[i] != 0 && b_hash[i] == 0) {
-					max += a_hash[i];
+		for (int i = 1; i < dp.length; i++) {
+			for (int j = 1; j < dp[0].length; j++) {
+				if (a.charAt(i - 1) == b.charAt(j - 1)) {
+					dp[i][j] = dp[i - 1][j] + dp[i - 1][j - 1];
+				} else {
+					dp[i][j] = dp[i - 1][j];
 				}
 			}
 		}
-		System.out.println(max);
+		System.out.println(dp[a.length()][b.length()]);
 	}
 }

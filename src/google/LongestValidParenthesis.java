@@ -5,7 +5,7 @@ import java.util.Stack;
 public class LongestValidParenthesis {
 
 	public static void main(String[] args) {
-		String input = ")()(()";
+		String input = "(()";
 		
 		if("".equals(input) || input == null) {
 			return;

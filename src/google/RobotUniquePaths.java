@@ -16,6 +16,7 @@ public class RobotUniquePaths {
 		
 		for(int i = 1; i < dp.length; i++) {
 			for(int j = 1; j < dp[0].length; j++) {
+				//robot can travel from top to bottom or from left to right. hence, it has reached this point either from top value or left value.   
 				dp[i][j] = dp[i-1][j] + dp[i][j-1];
 			}
 		}

@@ -15,7 +15,7 @@ public class KnapsackPizzaShop {
 			}
 		}
 
-		int maxCost = knapsack(cost, amount, cost.length);
+		int maxCost = knapsack(cost, amount, cost.length - 1);
 
 		System.out.println(maxCost);
 	}
@@ -25,10 +25,10 @@ public class KnapsackPizzaShop {
 		if (amount == 0 || n == 0)
 			return 0;
 
-		if (cost[n - 1] > amount) {
+		if (cost[n] > amount) {
 			return knapsack(cost, amount, n - 1);
 		} else {
-			return Math.max(cost[n - 1] + knapsack(cost, amount - cost[n - 1], n - 1), knapsack(cost, amount, n - 1));
+			return Math.max(cost[n] + knapsack(cost, amount - cost[n], n - 1), knapsack(cost, amount, n - 1));
 		}
 	}
 }
