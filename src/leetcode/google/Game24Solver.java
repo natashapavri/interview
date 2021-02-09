@@ -45,7 +45,7 @@ public class Game24Solver {
 	}
 
 	private static double[] compare(double a, double b) {
-		return new double[] { a + b, a - b, a * b, a / b, b - a, a / b, b / a };
+		return new double[] { a + b, a - b, a * b, a / b, b - a, b / a };
 
 	}
 

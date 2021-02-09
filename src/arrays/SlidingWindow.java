@@ -2,7 +2,7 @@ package arrays;
 public class SlidingWindow {
 
 	public static void main(String[] args) {
-		int[] trees = {1,2,3,2,2};
+		int[] trees = {1,2,3,1,2,3,3,3};
 		int n = trees.length;
 		int k = 2;
 		// n must be greater 

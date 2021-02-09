@@ -7,7 +7,7 @@ import java.util.List;
 public class TwoSumPointers {
 
 	public static void main(String[] args) {
-		int[] nums = { 2, 7, 11, 15, 5, 4 };
+		int[] nums = { 16, -7, 11, 15, 5, 4 };
 
 		List<IndexPairs> indexPairs = new ArrayList<IndexPairs>();
 		int targetSum = 9;

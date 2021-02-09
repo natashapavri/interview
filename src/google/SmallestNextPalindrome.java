@@ -1,6 +1,6 @@
 package google;
 
-public class LargestNextPalindrome {
+public class SmallestNextPalindrome {
 
 	public static void main(String[] args) {
 		String str1 = "23545";

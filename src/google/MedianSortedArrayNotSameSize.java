@@ -2,6 +2,7 @@ package google;
 
 public class MedianSortedArrayNotSameSize {
 
+	// https://www.youtube.com/watch?v=q6IEA26hvXc
 	public static void main(String[] args) {
 		int[] A = { 1, 4, 5 };
 		int[] B = { 2, 3 };

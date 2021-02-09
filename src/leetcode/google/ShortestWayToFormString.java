@@ -3,8 +3,8 @@ package leetcode.google;
 public class ShortestWayToFormString {
 
 	public static void main(String[] args) {
-		String source = "abc";
-		String target = "abcbc";
+		String source = "xyz";
+		String target = "xzyxz";
 		
 		int count = findSubsequences(source, target);
 		
@@ -29,7 +29,7 @@ public class ShortestWayToFormString {
 			} else {
 				count++;
 			}
-			remaining = remaining.substring(sb.length());
+			remaining = remaining.substring(j);
 		}
 		
 		return count;

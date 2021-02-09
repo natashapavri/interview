@@ -1,79 +1,63 @@
 package leetcode.google;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Map;
-
-import graph.GraphNode;
+import java.util.Set;
 
 public class SequenceReconstruction {
 
+	/**
+	 * For org to be uniquely reconstructible from seqs we need to satisfy 2
+	 * conditions:
+	 * 
+	 * 1. Every sequence in seqs should be a subsequence in org. This part is
+	 * obvious. 2. Every 2 consecutive elements in org should be consecutive
+	 * elements in some sequence from seqs. Why is that? Well, suppose condition
+	 * 1 is satisfied. Then for 2 any consecutive elements x and y in org we
+	 * have 2 options. We have both xand y in some sequence from seqs. Then (as
+	 * condition 1 is satisfied) they must be consequtive elements in this
+	 * sequence. There is no sequence in seqs that contains both x and y. In
+	 * this case we cannot uniquely reconstruct org from seqs as sequence with x
+	 * and y switched would also be a valid original sequence for seqs.
+	 * 
+	 */
 	public static void main(String[] args) {
-		int[][] seqs = { { 5, 2, 6, 3 }, { 4, 1, 5, 2 } };
-		int[] orgs = { 4, 1, 5, 2, 6, 3 };
-		
-		Map<Integer, GraphNode> graph = new HashMap<Integer, GraphNode>();
-		
-		for(int i = 0; i < seqs.length; i++) {
-			for(int j = 0; j < seqs[0].length; j++) {
-				if(!graph.containsKey(seqs[i][j])) {
-					GraphNode g = new GraphNode(seqs[i][j]);
-					g.setChildren(new ArrayList<>());
-					graph.put(seqs[i][j], g);
-				}
-			}
-		}
-		
-		for(int i = 0; i < seqs.length; i++) {
-			for(int j = 1; j < seqs[0].length; j++) {
-				GraphNode parent = graph.get(seqs[i][j-1]);
-				GraphNode child = graph.get(seqs[i][j]);
-				parent.getChildren().add(child);
-			}
-		}
-		
-		List<GraphNode> temporaryMarks = new ArrayList<>();
-		List<GraphNode> permanentMarks = new ArrayList<>();
-		List<GraphNode> result = new LinkedList<GraphNode>();
-		
-		for(int i : graph.keySet()) {
-			if(!permanentMarks.contains(graph.get(i))) {
-				visit(graph, graph.get(i), permanentMarks, temporaryMarks, result);
-			}
-		}
-		
-		Collections.reverse(result);
-		int i = 0;
-		for(GraphNode g : result) {
-			System.out.print(g.getValue() + "-->");
-			if(orgs[i++] != g.getValue()) {
-				System.out.println(false);
-				return;
-			}
-		}
-		
-		System.out.println(true);
+		int[][] seqs = { { 1, 2 }, { 1, 3 } };
+		int[] orgs = { 1, 2, 3 };
+		boolean result = sequenceReconstruction(seqs, orgs);
+		System.out.println(result);
 	}
 
-	private static void visit(Map<Integer, GraphNode> graph, GraphNode g, List<GraphNode> permanentMarks,
-			List<GraphNode> temporaryMarks, List<GraphNode> result) {
-		
-		if(temporaryMarks.contains(g)) {
-			throw new IllegalArgumentException();
-		}
-		
-		if(!permanentMarks.contains(g)) {
-			temporaryMarks.add(g);
-			for(GraphNode gc : g.getChildren()) {
-				visit(graph, gc, permanentMarks, temporaryMarks, result);
-			}
-			temporaryMarks.remove(g);
-			result.add(g);
-			permanentMarks.add(g);
-		}
-	}
+	public static boolean sequenceReconstruction(int[][] seqs, int[] orgs) {
+		// note indices of all elements in result
+		Map<Integer, Integer> order = new HashMap<>();
+		for (int i = 0; i < orgs.length; i++)
+			order.put(orgs[i], i);
 
+		Map<Integer, Set<Integer>> map = new HashMap<>();
+		for (int[] seq : seqs) {
+			if (seq.length == 1) {
+				map.putIfAbsent(seq[0], new HashSet<>());
+				continue;
+			}
+			for (int i = 0; i < seq.length - 1; i++) {
+				Integer prev = seq[i];
+				Integer next = seq[i + 1];
+				map.putIfAbsent(prev, new HashSet<>());
+				map.putIfAbsent(next, new HashSet<>());
+				if (!order.containsKey(prev) || !order.containsKey(next) || order.get(prev) >= order.get(next))
+					return false;
+				map.get(prev).add(next);
+			}
+		}
+		if (map.keySet().size() != orgs.length || !map.containsKey(orgs[0]))
+			return false;
+		for (int i = 0; i < orgs.length - 1; i++) {
+			if (!map.get(orgs[i]).contains(orgs[i + 1]))
+				return false;
+		}
+		return true;
+
+	}
 }

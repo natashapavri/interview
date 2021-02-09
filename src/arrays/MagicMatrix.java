@@ -31,14 +31,14 @@ public class MagicMatrix {
 		// 5x5 will need 1-25 numbers
 		for (int i = 1; i <= n*n; i++) {
 
-			if (nextRow == -1 && nextColumn == n) // 3rd condition
+			if (nextRow < 0 && nextColumn >= n) // 3rd condition
 			{
 				nextColumn = n - 2;
 				nextRow = 0;
 			} else {
 				// 1st condition helper if next number
 				// goes to out of square's right side
-				if (nextColumn == n)
+				if (nextColumn >= n)
 					nextColumn = 0;
 
 				// 1st condition helper if next number is

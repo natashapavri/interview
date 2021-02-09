@@ -4,6 +4,7 @@ import java.util.TreeSet;
 
 public class MaximumSumNotLargerThan {
 
+	// works for +ve and -ve numbers
 	public static void main(String[] args) {
 		int[] nums = { 1, 2, 3, 4, 6, 7 };
 		int limit = 11;

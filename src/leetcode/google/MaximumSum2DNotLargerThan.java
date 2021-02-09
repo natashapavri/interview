@@ -24,12 +24,7 @@ public class MaximumSum2DNotLargerThan {
 					sum += (c1 == 0) ? matrix[r][c2] : matrix[r][c2] - matrix[r][c1 - 1];
 					Integer ceiling = set.ceiling(sum - limit);
 					if (ceiling != null) {
-						if (result < (sum - ceiling)) {
-							result = sum - ceiling;
-							System.out.println(c1 + " " + c2 + " " + r);
-						}
 						result = Math.max(result, sum - ceiling);
-
 					}
 					set.add(sum);
 				}

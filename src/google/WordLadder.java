@@ -91,7 +91,7 @@ public class WordLadder {
 			for (String word : dict) {
 				WordLadderNode n = new WordLadderNode(word, node.getLength() + 1);
 				if (isAdjacent(word, output)) {
-					return n.getLength();
+					return n.getLength() + 1; //have to count the output node
 				}
 				if (isAdjacent(word, node.getWord()) && !visited.contains(n)) {
 					queue.add(n);

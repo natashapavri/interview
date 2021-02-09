@@ -48,4 +48,9 @@ public class GraphNode {
 		this.children = children;
 	}
 
+	@Override
+	public String toString() {
+		return "GraphNode [value=" + value + ", weight=" + weight + ", children=" + children + "]";
+	}
+	
 }

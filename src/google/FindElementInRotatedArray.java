@@ -16,7 +16,7 @@ public class FindElementInRotatedArray {
 				result = mid;
 				break;
 			}
-			// left sorted array
+			// left sorted array (left - target - mid)
 			else if(nums[left] <= nums[mid]) {
 				if(nums[left] <= target && nums[mid] > target) {
 					right = mid - 1;
@@ -24,7 +24,7 @@ public class FindElementInRotatedArray {
 					left = mid + 1;
 				}
 			}
-			// right sorted array
+			// right sorted array (mid - target - right)
 			else if(nums[right] >= nums[mid]) {
 				if(nums[mid] < target && nums[right] >= target) {
 					left = mid + 1;

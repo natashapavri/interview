@@ -5,6 +5,7 @@ import java.util.PriorityQueue;
 
 public class LongestSubarrayWithDiff {
 
+	//https://www.youtube.com/watch?v=LDFZm4iB7tA
 	public static void main(String[] args) {
 		int[] nums = {10,1,2,4,7,2};
 		int limit = 5;

@@ -39,7 +39,7 @@ public class TrieDictionaryLookup {
 		}
 		TrieNode root3 = prepareDictionary(t);
 		List<String> substrings = new ArrayList<>();
-		findSubstrings(root3, substrings);
+		findAllWords(root3, substrings);
 		for (String str : substrings) {
 			System.out.println(str);
 		}
@@ -70,15 +70,6 @@ public class TrieDictionaryLookup {
 			prefixMap.put(word, current.getPrefix());
 		}
 		return prefixMap;
-	}
-
-	private static void findSubstrings(TrieNode root3, List<String> results) {
-		TrieNode current = root3;
-		if (current.isWord())
-			results.add(current.getPrefix());
-		for (Character c : current.getChildren().keySet()) {
-			findSubstrings(current.getChildren().get(c), results);
-		}
 	}
 
 	private static int findMinimumDeletes(String word, TrieNode top) {

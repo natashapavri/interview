@@ -48,6 +48,7 @@ public class MultiplyLargeNumbers {
 				int product = (aDigit * bDigit) + carry;
 				carry = (product >= 10) ? product / 10 : 0;
 				product = product % 10;
+				// to create a number given digits in reverse order (2 and then 1)
 				rowCount = rowCount + (product * ((int)Math.pow(10, r++)));
 			}
 			rowCount = (rowCount * ((int)Math.pow(10, k++)));

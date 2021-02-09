@@ -11,8 +11,8 @@ public class LicenseKey {
 		StringBuilder sb = new StringBuilder();
 
 		for (int i = key.length() - 1; i >= 0;) {
-			char[] licensePart = new char[k + 1];
-			for (int j = k; j > 0; j--) {
+			char[] licensePart = new char[k];
+			for (int j = k - 1; j >= 0; j--) {
 				if (i >= 0) {
 					licensePart[j] = key.charAt(i--);
 				}

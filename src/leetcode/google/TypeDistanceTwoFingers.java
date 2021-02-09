@@ -10,9 +10,8 @@ public class TypeDistanceTwoFingers {
 		Map<Integer, Pair<Integer>> keyboard = new HashMap<Integer, Pair<Integer>>();
 		char c = 'A';
 		for(int i = 0; i < 6; i++) {
-			for(int j = 0; j < 6 && c <= 'Z'; j++) {
+			for(int j = 0; j < 6 && c <= 'Z'; j++, c++) {
 				keyboard.put(c - 'A', new Pair<Integer>(i, j));
-				c++;
 			}
 		}
 		Integer[][][]dp = new Integer[27][27][word.length()];
