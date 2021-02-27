@@ -2,6 +2,11 @@ package sort;
 
 public class MergeSort {
 
+	/**
+	 * Time complexity = O(nlogn)
+	 * Space complexity = O(n)
+	 * 
+	 */
 	public static void main(String[] args) {
 		int[] nums = { -1, 4, 5, 0, 3, 2, 10 };
 

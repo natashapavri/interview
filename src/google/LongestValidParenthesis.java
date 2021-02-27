@@ -21,7 +21,8 @@ public class LongestValidParenthesis {
 			if(c == '(') {
 				stack.push(i);
 			} else {
-				stack.pop();
+				if(!stack.isEmpty())
+					stack.pop();
 				if(stack.isEmpty()) {
 					stack.push(i);
 				} else {

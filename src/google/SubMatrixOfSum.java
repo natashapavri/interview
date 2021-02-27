@@ -18,13 +18,13 @@ public class SubMatrixOfSum {
 
 		Map<Integer, Integer> prefixSum = new HashMap<Integer, Integer>();
 		int count = 0;
-		for (int i = 0; i < matrix.length; i++) {
-			for (int j = i; j < matrix.length; j++) {
+		for (int c1 = 0; c1 < matrix[0].length; c1++) {
+			for (int c2 = c1; c2 < matrix[0].length; c2++) {
 				prefixSum.clear();
 				prefixSum.put(0, 1);
 				int curSum = 0;
-				for (int k = 0; k < matrix[0].length; k++) {
-					curSum = curSum + matrix[k][j] - (i > 0 ? matrix[k][i - 1] : 0);
+				for (int r = 0; r < matrix.length; r++) {
+					curSum += (c1 == 0) ? matrix[r][c2] : matrix[r][c2] - matrix[r][c1 - 1];
 					count += prefixSum.getOrDefault(curSum - targetSum, 0);
 					prefixSum.put(curSum, prefixSum.getOrDefault(curSum, 0) + 1);
 				}

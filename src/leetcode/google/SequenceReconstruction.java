@@ -15,8 +15,8 @@ public class SequenceReconstruction {
 	 * obvious. 2. Every 2 consecutive elements in org should be consecutive
 	 * elements in some sequence from seqs. Why is that? Well, suppose condition
 	 * 1 is satisfied. Then for 2 any consecutive elements x and y in org we
-	 * have 2 options. We have both xand y in some sequence from seqs. Then (as
-	 * condition 1 is satisfied) they must be consequtive elements in this
+	 * have 2 options. We have both x and y in some sequence from seqs. Then (as
+	 * condition 1 is satisfied) they must be consecutive elements in this
 	 * sequence. There is no sequence in seqs that contains both x and y. In
 	 * this case we cannot uniquely reconstruct org from seqs as sequence with x
 	 * and y switched would also be a valid original sequence for seqs.

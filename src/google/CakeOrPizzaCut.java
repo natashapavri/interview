@@ -34,12 +34,13 @@ public class CakeOrPizzaCut {
 				result = 0;
 			}
 		} else {
+			//rowS - i - rowE
 			for (int i = rowS; i <= rowE; i++) {
 				if (isPossible(pizza, rowS, i, colS, colE)) {
 					result += findWaysToCut(pizza, i + 1, rowE, colS, colE, k - 1, dp);
 				}
 			}
-
+			//colS - i - colE
 			for (int i = colS; i <= colE; i++) {
 				if (isPossible(pizza, rowS, rowE, colS, i)) {
 					result += findWaysToCut(pizza, rowS, rowE, i + 1, colE, k - 1, dp);

@@ -12,6 +12,18 @@ import java.util.Set;
 
 public class WordLadder {
 
+	/**
+	 * Let N = number of words in the dictionary
+	 * Let M = length of each word in the dictionary
+	 * Time complexity = O(N^2 * M) since for each element in the queue we traverse the dictionary and we spend M time 
+	 * to find adjacent words
+	 * Space complexity = O(N) + O(N) (queue + visited)
+	 * 
+	 * For part 2 (backtracking) -
+	 * Let N = number of words in the dictionary
+	 * Let L = length of the neighbors list 
+	 * Time complexity = O(N + L) 
+	 */
 	public static void main(String[] args) {
 		String input = "hit";
 		String output = "cog";

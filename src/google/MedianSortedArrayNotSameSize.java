@@ -7,6 +7,7 @@ public class MedianSortedArrayNotSameSize {
 		int[] A = { 1, 4, 5 };
 		int[] B = { 2, 3 };
 
+		// A must be the smaller array
 		if (A.length > B.length) {
 			int[] temp = A;
 			A = B;

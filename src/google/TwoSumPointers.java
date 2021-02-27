@@ -13,10 +13,11 @@ public class TwoSumPointers {
 		int targetSum = 9;
 
 		int slidingSum = 0;
+		int k = 2;
 
-		for (int i = 0; i < 2; i++) {
+		for (int i = 0; i < k; i++) {
 			slidingSum += nums[i];
-			if (slidingSum == targetSum) {
+			if (slidingSum == targetSum && i != 0) {
 				IndexPairs index = new IndexPairs();
 				index.setX(nums[i - 1]);
 				index.setY(nums[i]);
@@ -24,8 +25,7 @@ public class TwoSumPointers {
 			}
 		}
 
-		int k = 2;
-		for (int i = 2; i < nums.length; i++) {
+		for (int i = k; i < nums.length; i++) {
 			slidingSum += nums[i] - nums[i - k];
 			if (slidingSum == targetSum) {
 				IndexPairs index = new IndexPairs();

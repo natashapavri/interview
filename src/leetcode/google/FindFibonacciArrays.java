@@ -24,9 +24,11 @@ public class FindFibonacciArrays {
         for (int i = start; i < s.length(); i++) {
             cur = (cur * 10L) + (long)(s.charAt(i) - '0');
             
+            // list size should be 3 because we have n1 + n2 = n3 in any fibonacci sequence
             if (list.size() < 2 || list.get(list.size() - 1) + list.get(list.size() - 2) == (int)cur) {
                 list.add((int)cur);
                 List<Integer> next = backtrack(s, i + 1, list);
+                //atleast 3 nums in a fibonacci series is needed
                 if (next.size() > 2) {
                     return next;
                 }

@@ -8,7 +8,7 @@ public class Knapsack01 {
         int W = 50; 
         int n = val.length; 
         
-        int maxValue = knapsack(val, wt, W, n);
+        int maxValue = knapsack(val, wt, W, n - 1);
         
         System.out.println(maxValue);
 	}
@@ -16,12 +16,12 @@ public class Knapsack01 {
 	private static int knapsack(int[] val, int[] wt, int w, int n) {
 		if(n==0 || w ==0) return 0;
 		
-		if(wt[n-1] > w) {
+		if(wt[n] > w) {
 			return knapsack(val, wt, w, n-1);
 		} else {
 			// include nth item
 			//not include nth item
-			return Math.max(val[n-1] + knapsack(val, wt, w-wt[n-1], n-1), knapsack(val, wt, w, n-1));
+			return Math.max(val[n] + knapsack(val, wt, w-wt[n], n-1), knapsack(val, wt, w, n-1));
 		}
 	}
 }

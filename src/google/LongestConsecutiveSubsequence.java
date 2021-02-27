@@ -6,7 +6,7 @@ import java.util.Set;
 public class LongestConsecutiveSubsequence {
 
 	public static void main(String[] args) {
-		int[] nums = { 100, 99, 98, 97, 96, 4, 1, 3, 2 };
+		int[] nums = { 100, 4, 200, 1, 3, 2 };
 
 		int count = 0, max = Integer.MIN_VALUE;
 

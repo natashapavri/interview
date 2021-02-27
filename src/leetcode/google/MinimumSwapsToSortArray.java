@@ -7,7 +7,7 @@ import java.util.Map;
 public class MinimumSwapsToSortArray {
 	
 	//Time complexity = O(nlogn)
-	//Space complezity = O(n)
+	//Space complexity = O(n)
 	public static void main(String[] args) {
 		int[] arr = { 1, 4, 3, 2 };
 		int[] temp = Arrays.copyOfRange(arr, 0, arr.length);

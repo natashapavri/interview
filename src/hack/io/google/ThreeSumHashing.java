@@ -1,4 +1,4 @@
-package google;
+package hack.io.google;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -8,8 +8,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public class FourSumHashing {
+public class ThreeSumHashing {
 
+	// Time complexity = O(n^2)
+	// Space complexity = O(n)
 	public static void main(String[] args) {
 		int[] nums = { 1, 0, -1, 0, -2, 2 };
 		int target = 0;
@@ -34,21 +36,16 @@ public class FourSumHashing {
 		}
 
 		for (int i = 0; i < nums.length - 1; i++) {
-			for (int j = i + 1; j < nums.length; j++) {
-				int sum = nums[i] + nums[j];
-				int diff = target - sum;
-				if (sumMap.containsKey(diff)) {
-					if (sumMap.get(diff).getA() != i && sumMap.get(diff).getB() != j
-							&& sumMap.get(diff).getA() != j && sumMap.get(diff).getB() != i) {
-						List<Integer> s = new ArrayList<Integer>();
-						s.add(nums[i]);
-						s.add(nums[j]);
-						s.add(nums[sumMap.get(diff).getA()]);
-						s.add(nums[sumMap.get(diff).getB()]);
-						Collections.sort(s);
-						results.add(s);
-					}
-
+			int sum = nums[i];
+			int diff = target - sum;
+			if (sumMap.containsKey(diff)) {
+				if (sumMap.get(diff).getA() != i && sumMap.get(diff).getB() != i) {
+					List<Integer> s = new ArrayList<Integer>();
+					s.add(nums[i]);
+					s.add(nums[sumMap.get(diff).getA()]);
+					s.add(nums[sumMap.get(diff).getB()]);
+					Collections.sort(s);
+					results.add(s);
 				}
 			}
 		}
@@ -114,9 +111,4 @@ class Pair<T> {
 		return true;
 	}
 
-	@Override
-	public String toString() {
-		return "Pair [a=" + a + ", b=" + b + "]";
-	}
-	
 }

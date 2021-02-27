@@ -1,4 +1,5 @@
 package arrays;
+
 import java.util.Arrays;
 
 public class StoreHouses {
@@ -29,13 +30,17 @@ public class StoreHouses {
 					results[i] = stores[mid];
 					break;
 				}
-				if(diff == minDiff) {
+				if (diff == minDiff) {
 					results[i] = Math.min(results[i], stores[mid]);
-				}
-				else if (minDiff > diff) {
+				} else if (minDiff > diff) {
 					minDiff = diff;
 					results[i] = stores[mid];
 				}
+				/**
+				 * stores are sorted in ascending order. So if houses[i] >
+				 * stores[mid] then you have to increase the stores[mid] to
+				 * minimize the diff. So we have to move left ahead.
+				 */
 				if (stores[mid] > houses[i]) {
 					high = mid - 1;
 				} else {

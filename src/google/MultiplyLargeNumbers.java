@@ -41,7 +41,7 @@ public class MultiplyLargeNumbers {
 		for(int i = b.length() - 1; i>=0; i--) {
 			int bDigit = b.charAt(i) - '0';
 			int carry = 0;
-			int rowCount = 0;
+			int rowSum = 0;
 			int r = 0;
 			for(int j = a.length() - 1; j>=0; j--) {
 				int aDigit = a.charAt(j) - '0';
@@ -49,10 +49,10 @@ public class MultiplyLargeNumbers {
 				carry = (product >= 10) ? product / 10 : 0;
 				product = product % 10;
 				// to create a number given digits in reverse order (2 and then 1)
-				rowCount = rowCount + (product * ((int)Math.pow(10, r++)));
+				rowSum = rowSum + (product * ((int)Math.pow(10, r++)));
 			}
-			rowCount = (rowCount * ((int)Math.pow(10, k++)));
-			sum+=rowCount;
+			rowSum = (rowSum * ((int)Math.pow(10, k++)));
+			sum+=rowSum;
 		}
 		
 		return String.valueOf(sum);

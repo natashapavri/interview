@@ -6,8 +6,8 @@ import java.util.List;
 public class MergeIntervals {
 
 	public static void main(String[] args) {
-		int[][] pairs = { { 1, 3 }, { 6, 9 } };
-		int[] merge = { 2, 5 };
+		int[][] pairs = { { 1, 2 }, { 3, 5 }, { 6, 7 }, { 8, 10 }, { 12, 16 } };
+		int[] merge = { 4, 9 };
 
 		List<int[]> overlaps = new ArrayList<int[]>();
 

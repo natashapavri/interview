@@ -4,19 +4,23 @@ public class MakeChange {
 	public static void main(String[] args) {
 		int change = 50;
 		int[] coins = {25,10,5,1};
-		int numberOfCoins = 0;
-		if(change == 0) System.out.println(numberOfCoins);
-		if(change < 0) throw new IllegalArgumentException();
 		
-		while(change != 0) {
-			for(int i =0 ; i< coins.length; i++) {
-				if(coins[i] <= change) {
-					change -= coins[i];
-					numberOfCoins++;
-					break;
+		int[] cache = new int[change + 1];
+		
+		for(int i = 1; i <= change; i++) {
+			int minCoins = Integer.MAX_VALUE;
+			
+			for(int coin : coins) {
+				if(i - coin >= 0) {
+					int currCoins = cache[i - coin] + 1;
+					if(minCoins > currCoins) {
+						minCoins = currCoins;
+					}
 				}
 			}
+			cache[i] = minCoins;
 		}
-		System.out.println(numberOfCoins);
+		
+		System.out.println(cache[change]);
 	}
 }

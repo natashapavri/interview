@@ -2,6 +2,11 @@ package sort;
 
 public class QuickSort {
 
+	/**
+	 * Time complexity = O(n^2)
+	 * Space complexity = O(1)
+	 * 
+	 */
 	public static void main(String[] args) {
 		int[] nums = { -1, 4, 5, 0, 3, 2, 10 };
 		sort(nums, 0, nums.length - 1);

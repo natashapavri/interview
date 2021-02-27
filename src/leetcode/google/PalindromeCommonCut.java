@@ -28,6 +28,12 @@ public class PalindromeCommonCut {
 			return true;
 		}
 		
+		/**
+		 * a = abcd and b = cdab
+		 * a = abcd and b = cddc
+		 * 
+		 *  this last condition means we can cut at the end of the one of the strings so that the result is a palindrome 
+		 */
 		return isPalindrome(a.substring(i, j+1)) || isPalindrome(b.substring(i,  j+1));
 	}
 

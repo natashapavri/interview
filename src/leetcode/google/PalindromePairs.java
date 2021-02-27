@@ -80,7 +80,7 @@ public class PalindromePairs {
 		return prefixes;
 	}
 
-	// total string = 0 - i - length. we need i - length (not including i) hence we will check if 0 - i is a palindrome. 
+	// total string = 0 - i - length. we need i - length (not including i) hence we will check if 0 - i + 1 is a palindrome. 
 	private static List<String> getAllSuffixes(String word) {
 		List<String> suffixes = new ArrayList<>();
 		for(int i = 0; i < word.length(); i++) {

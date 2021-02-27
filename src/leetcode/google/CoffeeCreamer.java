@@ -24,6 +24,9 @@ public class CoffeeCreamer {
 	 * supplier[0] Day 2 on Hand[2]
 	 * 
 	 * return maximum units of creamer the manager can order without waste.
+	 * 
+	 * Time complexity = O(maxExpiryDate log(maxExpiryDate))
+	 * Space complexity = O(H) + O(S) where H is the number of creamers on hand and S is creamers with supplier
 	 */
 
 	public static void main(String[] args) {
@@ -47,10 +50,10 @@ public class CoffeeCreamer {
 				int currentExpirySupplier = i + supplierExpiry[i];
 				supplierExpiryMap.put(currentExpirySupplier, supplierExpiryMap.getOrDefault(currentExpirySupplier, 0) + supplier[i]);
 			}
-			if(onHandExpiryMap.firstKey() > i) {
+			while(!onHandExpiryMap.isEmpty() && onHandExpiryMap.firstKey() < i) {
 				onHandExpiryMap.remove(onHandExpiryMap.firstKey());
 			}
-			if(supplierExpiryMap.firstKey() > i) {
+			while(!supplierExpiryMap.isEmpty() && supplierExpiryMap.firstKey() < i) {
 				supplierExpiryMap.remove(supplierExpiryMap.firstKey());
 			}
 			int k = demand;

@@ -29,8 +29,10 @@ public class TrieDictionaryLookup {
 		String text = "ababa";
 		List<String> texts = new ArrayList<>();
 		for (int i = 0; i < text.length(); i++) {
-			String str = text.substring(i, text.length());
-			texts.add(str);
+			String strStart = text.substring(0, i + 1);
+			String strEnd = text.substring(i, text.length());
+			texts.add(strStart);
+			texts.add(strEnd);
 		}
 		String[] t = new String[texts.size()];
 		int i = 0;
@@ -48,7 +50,7 @@ public class TrieDictionaryLookup {
 		String[] words = { "zebra", "dog", "duck", "dove" };
 		TrieNode root4 = prepareDictionary(words);
 		Map<String, String> prefixMap = findShortestPrefix(root4, words);
-		for(String w : prefixMap.keySet()) {
+		for (String w : prefixMap.keySet()) {
 			System.out.println(w + " : " + prefixMap.get(w));
 		}
 
@@ -57,11 +59,11 @@ public class TrieDictionaryLookup {
 	private static Map<String, String> findShortestPrefix(TrieNode root4, String[] words) {
 		Map<String, String> prefixMap = new HashMap<>();
 		TrieNode current = root4;
-		for(String word : words) {
+		for (String word : words) {
 			current = root4;
-			for(char c : word.toCharArray()) {
-				if(current.getChildren().containsKey(c)) {
-					if(current.getChildren().size() <= 1) {
+			for (char c : word.toCharArray()) {
+				if (current.getChildren().containsKey(c)) {
+					if (current.getChildren().size() <= 1) {
 						break;
 					}
 					current = current.getChildren().get(c);
@@ -134,4 +136,3 @@ public class TrieDictionaryLookup {
 		}
 	}
 }
-

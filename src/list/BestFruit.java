@@ -17,10 +17,7 @@ public class BestFruit {
 				int vote = votes[i][j];
 				if (deletes.contains(vote))
 					continue;
-				if (!freq.containsKey(vote))
-					freq.put(vote, 1);
-				else
-					freq.put(vote, freq.get(vote) + 1);
+				freq.put(vote, freq.getOrDefault(vote, 0) + 1);
 			}
 
 			if (freq.size() > 1) {
